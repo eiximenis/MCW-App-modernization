@@ -113,7 +113,6 @@ In this task, you run an Azure Resource Manager (ARM) template to deploy and con
 - App Service (Web App)
 - App Service (API App)
 - Function App
-- API Management
 - Key Vault
 - Azure Cognitive Search
 - Azure Cognitive Services account
@@ -123,9 +122,9 @@ In this task, you run an Azure Resource Manager (ARM) template to deploy and con
 
 1. To run the ARM template deployment, select the **Deploy to Azure** button below, which opens a custom deployment screen in the Azure portal.
 
-<a href ="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-App-modernization%2Fmaster%2FHands-on%20lab%2Flab-files%2FARM-template%2Fazure-deploy.json" target="_blank" title="Deploy to Azure">
-<img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
+   <a href ="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-App-modernization%2Fmaster%2FHands-on%20lab%2Flab-files%2FARM-template%2Fazure-deploy.json" target="_blank" title="Deploy to Azure">
+      <img src="http://azuredeploy.net/deploybutton.png"/>
+   </a>
 
 2. On the custom deployment screen in the Azure portal, enter the following:
 
@@ -139,7 +138,6 @@ In this task, you run an Azure Resource Manager (ARM) template to deploy and con
 
     - **Admin Username**: Accept the default value, **demouser**.
     - **Admin Password**: Accept the default value, **Password.1!!**.
-    - **API Management Email**: Enter an email to use for admin notifications from API Management.
     - Check the box to agree to the Azure Marketplace terms and conditions.
 
     ![The Custom deployment blade displays, and the information above is entered on the Custom deployment blade.](media/azure-custom-deployment.png "Custom deployment blade")

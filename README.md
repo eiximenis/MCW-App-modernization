@@ -1,3 +1,6 @@
+## Let us know how we’re doing!  
+Please take a moment to fill out the [Microsoft Cloud Workshop Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyEtIpX7sDdChuWsXhzKJXJUNjFBVkROWDhSSVdYT0dSRkY4UVFCVzZBVy4u) and help us improve our offerings.
+
 # App modernization
 
 Contoso, Ltd. (Contoso) is a new company in an old business. Founded in Auckland, NZ, in 2011, they provide a full range of long-term insurance services to help individuals who are under-insured, filling a void their founders saw in the market. From the beginning, they grew faster than anticipated and have struggled to cope with rapid growth. During their first year alone, they added over 100 new employees to keep up with the demand for their services. To manage policies and associated documentation, they use a custom-developed Windows Forms application, called PolicyConnect. PolicyConnect uses an on-premises SQL Server 2008 R2 database as its data store, along with a file server on its local area network for storing policy documents. That application and its underlying processes for managing policies have become increasingly overloaded.
@@ -36,7 +39,6 @@ At the end of this hands-on lab, your ability to build solutions for modernizing
 
 ## Azure services and related products
 
-- API Management
 - App Services
 - Azure Active Directory
 - Azure Cognitive Services
@@ -57,17 +59,3 @@ At the end of this hands-on lab, your ability to build solutions for modernizing
 - [MCW](https://microsoftcloudworkshop.com)
 - [Reference architecture for Managed Web Applications](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app)
 - [Azure application architecture guide](https://docs.microsoft.com/azure/architecture/guide/)
-
-## Help & Support
-
-We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.
-
-**_Having trouble?_**
-
-- First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
-- Next, submit an issue with a detailed description of the problem.
-- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.
-
-If you are planning to present a workshop, _review and test the materials early_! We recommend at least two weeks prior.
-
-### Please allow 5 - 10 business days for review and resolution of issues.

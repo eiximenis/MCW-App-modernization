@@ -90,8 +90,6 @@ As part of the application modernization process, Contoso would also like to lea
 
 Given the potential for these new applications to increase the load on its database, they want to employ best practices for mitigating the impact of repeated querying of the database. Along these lines, they would like to implement a scoreboard of sorts that tracks the most active users in 24 hours, as well as the approximate the number of operations that user performed within the system in perpetuity. Both metrics are attractive to management to be able to get a cursory understanding of who the heaviest users are and how much they use the system.
 
-Contoso has multiple development teams that focus on separate business units (e.g., underwriting, sales, compliance, and brokers). IT leadership is excited to move as much business logic to APIs as possible. However, they are concerned that, over time, there may be duplication of effort as each team develops new or revises existing APIs. They would also like to open up a subset of APIs to a network of affiliated partners. They are interested in strategies to help them provide discoverability, security, and lifecycle management of an evolving API ecosystem. They would like advanced analytics and data visualizations of API usage to help manage the API inventory.
-
 According to Charlene Mathis, "Mobile applications represent a way to empower our brokers and our employees by bringing our software to the palm of their hands. Our primary investment is in making the best mobile app version of PolicyConnect possible. But, we also want to provide a streamlined way for our internal departments to quickly build custom apps to automate time-saving micro-processes without having to involve our developers." One micro-process she mentioned is enabling employees to set rules. For example, when a VIP customer sends an email, they get an application notification on their mobile device. Another scenario would be enabling employees to set workflows, like automatically saving attachments in emails with policy documents to the proper location in cloud storage.
 
 With this new system, Contoso would like to improve its security practices. In the previous version, each application tier maintained its configuration settings locally. For example, the data access layer would store the connection strings for SQL Server locally on disk. They would like to take an approach of externalizing secrets such as these from the web apps and APIs and storing them in an encrypted location accessible only to authorized services.
@@ -126,9 +124,7 @@ With this new system, Contoso would like to improve its security practices. In t
 
 4. We noticed that Azure SQL Database does not support all the features available in SQL Server. We are not using these features currently, but are curious to know what the options are for these in Azure? Specifically, we were thinking about Linked Servers, Database Mail, SQL Server Agent Jobs, and Service Broker.
 
-5. Moving everything to APIs sounds terrific, but how can we stay on top of our API inventory and manage discoverability, security, lifecycle, and monitoring into the future? Is there something we could use to develop a proof of concept quickly?
-
-6. We have been using .NET Framework for years, and now in Visual Studio web have options for .NET Framework, .NET Standard, and .NET Core. As we look at creating our new web and API applications, how do we choose the correct framework?
+5. We have been using .NET Framework for years, and now in Visual Studio web have options for .NET Framework, .NET Standard, and .NET Core. As we look at creating our new web and API applications, how do we choose the correct framework?
 
 ### Infographic for common scenarios
 
@@ -169,8 +165,6 @@ _Mobile and web applications_
 4. What Azure service would provide a lightweight, serverless API solution for retrieving policy documents from Azure blob storage?
 
 5. How would you secure sensitive information used by the website and APIs? Be specific on the Azure Service used, how you would configure it, and how the web or API logic would retrieve its secrets at run time.
-
-6. What recommendations can you make to help Contoso manage its API inventory as it grows in the future? Are there services in Azure that can provide a proof of concept _API Store_ experience now and serve as path to development in the future?
 
 _Data management_
 
@@ -252,5 +246,4 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Get Started with Flow                                 | <https://flow.microsoft.com/documentation/getting-started/>                                        |
 | Indexing Documents in Blob Storage                    | <https://azure.microsoft.com/documentation/articles/search-howto-indexing-azure-blob-storage/>     |
 | Working with Azure Functions Proxies                  | <https://docs.microsoft.com/azure/azure-functions/functions-proxies>                               |
-| Azure API Management Overview                         | <https://docs.microsoft.com/azure/api-management/api-management-key-concepts>                      |
 | What is "cognitive search" in Azure Cognitive Search? | <https://docs.microsoft.com/azure/search/cognitive-search-concept-intro>                           |

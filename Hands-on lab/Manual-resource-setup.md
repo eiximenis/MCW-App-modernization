@@ -17,15 +17,14 @@ June 2020
   - [Task 6: Provision a Web App](#task-6-provision-a-web-app)
   - [Task 7: Provision an API App](#task-7-provision-an-api-app)
   - [Task 8: Provision a Function App](#task-8-provision-a-function-app)
-  - [Task 9: Provision API Management](#task-9-provision-api-management)
-  - [Task 10: Create Azure Cognitive Search service](#task-10-create-azure-cognitive-search-service)
-  - [Task 11: Create Cognitive Services account](#task-11-create-cognitive-services-account)
-  - [Task 12: Create an Azure Key Vault](#task-12-create-an-azure-key-vault)
-  - [Task 13: Connect to the Lab VM](#task-13-connect-to-the-lab-vm)
-  - [Task 14: Install required software on the LabVM](#task-14-install-required-software-on-the-labvm)
-  - [Task 15: Connect to SqlServer2008 VM](#task-15-connect-to-sqlserver2008-vm)
-  - [Task 16: Restore and configure the ContosoInsurance database on the SqlServer2008 VM](#task-16-restore-and-configure-the-contosoinsurance-database-on-the-sqlserver2008-vm)
-  - [Task 17: Install the Microsoft Data Migration Assistant on the SqlServer2008 VM](#task-17-install-the-microsoft-data-migration-assistant-on-the-sqlserver2008-vm)
+  - [Task 9: Create Azure Cognitive Search service](#task-9-create-azure-cognitive-search-service)
+  - [Task 10: Create Cognitive Services account](#task-10-create-cognitive-services-account)
+  - [Task 11: Create an Azure Key Vault](#task-11-create-an-azure-key-vault)
+  - [Task 12: Connect to the Lab VM](#task-12-connect-to-the-lab-vm)
+  - [Task 13: Install required software on the LabVM](#task-13-install-required-software-on-the-labvm)
+  - [Task 14: Connect to SqlServer2008 VM](#task-14-connect-to-sqlserver2008-vm)
+  - [Task 15: Restore and configure the ContosoInsurance database on the SqlServer2008 VM](#task-15-restore-and-configure-the-contosoinsurance-database-on-the-sqlserver2008-vm)
+  - [Task 16: Install the Microsoft Data Migration Assistant on the SqlServer2008 VM](#task-16-install-the-microsoft-data-migration-assistant-on-the-sqlserver2008-vm)
 
 ## Task 1: Create an Azure Storage account
 
@@ -408,38 +407,7 @@ In this task, you provision a Function App, which is used for retrieving PDF doc
 
 8. Select **Create**.
 
-## Task 9: Provision API Management
-
-In this task, you provision API Management (APIM). APIM provides the ability to manage the Contoso APIs.
-
-1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
-
-   ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
-
-2. Enter "api management" into the Search the Marketplace box, select **API Management** from the results.
-
-   !["Api management" is entered into the Search the Marketplace box. API Management is selected in the results.](media/create-resource-api-management.png "Create Web App")
-
-3. On the API Management blade, select **Create**.
-
-4. On the API Management service blade, enter the following:
-
-   - **Name**: Enter contoso-apim-SUFFIX.
-   - **Subscription**: Select the subscription you are using for this hands-on lab.
-   - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
-   - **Location**: Select the location you are using for resources in this hands-on lab.
-   - **Organization name**: Enter Contoso Insurance.
-   - **Administrator email**: Enter an email add that can receive API Management admin notifications.
-   - **Pricing tier**: Select Developer (No SLA).
-   - **Enable Application Insights**: Uncheck this box.
-
-   ![The values specified above are entered into the API Management service blade.](media/api-management-service-create.png "Create API Management service")
-
-5. Select **Create**.
-
-6. It takes around 30 minutes for API Management to finish provisioning. You can move on to the next task while you wait.
-
-## Task 10: Create Azure Cognitive Search service
+## Task 9: Create Azure Cognitive Search service
 
 In this task, you create an Azure Cognitive Search service.
 
@@ -472,7 +440,7 @@ In this task, you create an Azure Cognitive Search service.
 
 7. It takes around 10 minutes for the new search service to finish provisioning. You can move on to the next task while you wait.
 
-## Task 11: Create Cognitive Services account
+## Task 10: Create Cognitive Services account
 
 In this task, you create a Cognitive Services account.
 
@@ -499,7 +467,7 @@ In this task, you create a Cognitive Services account.
 
 5. Select **Create**.
 
-## Task 12: Create an Azure Key Vault
+## Task 11: Create an Azure Key Vault
 
 In this task, you provision an Azure Key Vault, which enables application secrets to be stored securely.
 
@@ -535,7 +503,7 @@ In this task, you provision an Azure Key Vault, which enables application secret
 
 6. On the **Review + create** tab, select **Create**.
 
-## Task 13: Connect to the Lab VM
+## Task 12: Connect to the Lab VM
 
 In this task, you create an RDP connection to your Lab virtual machine (VM), and disable Internet Explorer Enhanced Security Configuration.
 
@@ -586,7 +554,7 @@ In this task, you create an RDP connection to your Lab virtual machine (VM), and
 
 12. Close the Server Manager, but leave the connection to the LabVM open for the next task.
 
-## Task 14: Install required software on the LabVM
+## Task 13: Install required software on the LabVM
 
 In this task, you configure the LabVM with the required software and downloads. First, you download and install SQL Server Management Studio (SSMS). Next, you download and install .NET Core 2.2. You also download a copy of the Visual Studio starter solution and unzip it into a folder named `C:\MCW`.
 
@@ -614,7 +582,7 @@ In this task, you configure the LabVM with the required software and downloads. 
 
    ![The Extract Compressed Folders dialog is displayed, with `C:\MCW` entered into the extraction location.](media/mcw-download-extract.png "Extract Compressed ZIP")
 
-## Task 15: Connect to SqlServer2008 VM
+## Task 14: Connect to SqlServer2008 VM
 
 In this task, you open an RDP connection to the SqlServer2008 VM, disable Internet Explorer Enhanced Security Configuration, and add a firewall rule to open port 1433 to inbound TCP traffic.
 
@@ -651,7 +619,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/2008-internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-## Task 16: Restore and configure the ContosoInsurance database on the SqlServer2008 VM
+## Task 15: Restore and configure the ContosoInsurance database on the SqlServer2008 VM
 
 In this task, you restore the `ContosoInsurance` database onto the SQL Server 2008 R2 instance using a backup provided by Contoso, Ltd.
 
@@ -681,7 +649,7 @@ In this task, you restore the `ContosoInsurance` database onto the SQL Server 20
 
    ![The ContosoInsurance database is highlighted in the list of databases.](media/ssms-databases.png "Databases")
 
-## Task 17: Install the Microsoft Data Migration Assistant on the SqlServer2008 VM
+## Task 16: Install the Microsoft Data Migration Assistant on the SqlServer2008 VM
 
 In this task, you install the Microsoft Data Migration Assistant (DMA) on the SqlServer2008 VM.
 

@@ -25,12 +25,6 @@
             "metadata": {
                 "description": "The password must be between 8 and 128 characters in length and must contain at least one number, one non-alphanumeric character, and one upper or lower case letter. Default value is Password.1!!"
             }
-        },
-        "apiManagementEmail": {
-            "type": "string",
-            "metadata": {
-                "description": "Enter the email address to use for API Management admin notifications."
-            }
         }
     },
     "variables": {
@@ -66,7 +60,6 @@
         "apiAppName": "[concat('contoso-api-', uniqueString(resourceGroup().id))]",
         "webAppName": "[concat('contoso-web-', uniqueString(resourceGroup().id))]",
         "functionAppName": "[concat('contoso-func-', uniqueString(resourceGroup().id))]",
-        "apiManagementName": "[concat('contoso-apim-', uniqueString(resourceGroup().id))]",
         "searchServiceName": "[concat('contoso-search-', uniqueString(resourceGroup().id))]",
         "cogServicesName": "[concat('cog-services-', uniqueString(resourceGroup().id))]",
         "keyVaultName": "[concat('contoso-kv-', uniqueString(resourceGroup().id))]"
@@ -426,20 +419,6 @@
                 },
                 "clientAffinityEnabled": false,
                 "reserved": false
-            }
-        },
-        {
-            "type": "Microsoft.ApiManagement/service",
-            "name": "[variables('apiManagementName')]",
-            "apiVersion": "2019-01-01",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Developer",
-                "capacity": 1
-            },
-            "properties": {
-                "publisherEmail": "[parameters('apiManagementEmail')]",
-                "publisherName": "Contoso Insurance"
             }
         },
         {
