@@ -12,27 +12,42 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 > **Note**: There is a known issue with screen resolution when using an RDP connection to Windows Server 2008 R2, which may affect some users. This issue presents itself as very small, hard to read text on the screen. The workaround for this is to use a second monitor for the RDP display, which should allow you to scale up the resolution to make the text larger.
 
-1. Connect to the **Sql2008-UniqueId** Virtual Machine from your lab details page by clicking on **GO TO SQL2008-Uniqueid** button.
+1. On the LabVM provided to you, type remote in the search box on taskbar, and choose **Remote Desktop Connection** from the items.
 
-   ![The Sql2008-UniqueId virtual machine is highlighted in the list of resources.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/resources-sql-server-2008-vm.png?raw=true "SQL Server 2008 VM")
+   ![The Sql2008-UniqueId virtual machine is highlighted in the list of resources.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/rdp-01.png?raw=true "RDP")
 
-2. Once connected to the Sql2008-UniqueId VM, search for ```sql server``` into  Windows Start menu and select **Microsoft SQL Server Management Studio 17** from the results and open it.
+2. On the  Remote Desktop Connection dialog, enter **Sqlvm DNS Name** in computer field and select **Connect**. You can get **Sqlvm DNS Name** from the environment details tab.
+
+   ![The Sql2008-UniqueId virtual machine is highlighted in the list of resources.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/rdp-02.png?raw=true "RDP")
+
+3. Enter the following credentials when prompted, and then select **OK**:
+
+   - **Username**: `demouser`
+   - **Password**: `Password.1!!`
+
+   ![The credentials specified above are entered into the Enter your credentials dialog.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/rdp-03.png?raw=true "Enter your credentials")
+   
+4. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
+
+   ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
+
+5. Once connected to the Sql2008-UniqueId VM, search for ```sql server``` into  Windows Start menu of Sql2008-UniqueId VM and select **Microsoft SQL Server Management Studio 17** from the results and open it.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
-3. In the SSMS **Connect to Server** dialog, enter **SQL2008-UniqueId** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+6. In the SSMS **Connect to Server** dialog, enter **SQL2008-UniqueId** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
    ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/ssms1.png?raw=true "Connect to Server")
 
-4. Once connected, expand **Databases** under SQL2008-UniqueId in the Object Explorer, and then select **ContosoInsurance** from the list of databases.
+7. Once connected, expand **Databases** under SQL2008-UniqueId in the Object Explorer, and then select **ContosoInsurance** from the list of databases.
 
    ![The ContosoInsurance database is highlighted in the list of databases.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/ssms2.png?raw=true "Databases")
 
-5. Next, you execute a script in SSMS, which resets the `sa` password, enable mixed mode authentication, create the `WorkshopUser` account, and change the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+8. Next, you execute a script in SSMS, which resets the `sa` password, enable mixed mode authentication, create the `WorkshopUser` account, and change the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-6. Copy and paste the SQL script below into the new query window:
+9. Copy and paste the SQL script below into the new query window:
 
     ```sql
     USE master;
@@ -71,15 +86,15 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
     GO
     ```
 
-7. To run the script, select **Execute** from the SSMS toolbar.
+10. To run the script, select **Execute** from the SSMS toolbar.
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
-8. For Mixed Mode Authentication and the new `sa` password to take effect, you must restart the SQL Server (MSSQLSERVER) Service on the Sql2008-UniqueId VM. To do this, you can use SSMS. Right-click the SQL2008-UniqueId instance in the SSMS Object Explorer, and then select **Restart** from the context menu.
+11. For Mixed Mode Authentication and the new `sa` password to take effect, you must restart the SQL Server (MSSQLSERVER) Service on the Sql2008-UniqueId VM. To do this, you can use SSMS. Right-click the SQL2008-UniqueId instance in the SSMS Object Explorer, and then select **Restart** from the context menu.
 
     ![In the SSMS Object Explorer, the context menu for the SQL2008-UniqueId instance is displayed, and Restart is highlighted.](media/ssms-object-explorer-restart-sqlserver2008.png "Object Explorer")
 
-9. When prompted about restarting the MSSQLSERVER service, select **Yes**. The service takes a few seconds to restart.
+12. When prompted about restarting the MSSQLSERVER service, select **Yes**. The service takes a few seconds to restart.
 
     ![The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service.](media/ssms-restart-service.png "Restart MSSQLSERVER service")
 

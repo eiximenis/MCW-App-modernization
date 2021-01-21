@@ -4,15 +4,7 @@ Duration: 45 minutes
 
 The developers at Contoso have been working toward migrating their apps to the cloud, and they have provided you with a starter solution developed using ASP.NET Core 2.2. As such, most of the pieces are already in place to deploy the apps to Azure, as well as configure them to communicate with the new app services. Since the required services have already been provisioned, what remains is to integrate Azure Key Vault into the API, apply application-level configuration settings, and then deploy the apps from the Visual Studio starter solution. In this task, you apply application settings to the Web API using the Azure Portal. Once the application settings have been set, you deploy the Web App and API App into Azure from Visual Studio.
 
-### Task 1: Connect to the LabVM
-
-In this task, you open an RDP connection to the LabVM, and downloading a copy of the starter solution provided by Contoso. The application deployments are handled using Visual Studio 2019, installed on the LabVM.
-
-1. Connect to the **LabVM** from the **Environment Details** page by clicking on **Go to LABVM-Unique Id** button.
-
-   ![The LabVM virtual machine is highlighted in the list of resources.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/labvm.png?raw=true "LabVM virtual machine")
-
-### Task 2: Open starter solution with Visual Studio
+### Task 1: Open starter solution with Visual Studio
 
 In this task, you open the `Contoso` starter solution in Visual Studio. The Visual Studio solution contains the following projects:
 
@@ -21,6 +13,8 @@ In this task, you open the `Contoso` starter solution in Visual Studio. The Visu
 - **Contoso.FunctionApp**: Contains an Azure Function that is used to retrieve policy documents from Blob storage.
 - **Contoso.Web**: ASP.NET Core 2.2 PolicyConnect web application.
 - **Contoso.WebApi**: ASP.NET Core 2.2 Web API used by the web application to communicate with the database.
+
+> **Note**: Make sure you are performing the below tasks in LabVM.
 
 1. In File Explorer, navigate to `C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\src` and double-click the `Contoso.sln` file to open the solution in Visual Studio.
 
@@ -38,7 +32,7 @@ In this task, you open the `Contoso` starter solution in Visual Studio. The Visu
 
    ![On the security warning dialog, the Ask me for every project in this solution box is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
-### Task 3: Update Web API to use Key Vault
+### Task 2: Update Web API to use Key Vault
 
 In this task, you update the `Contoso.WebApi` project to use Azure Key Vault for storing and retrieving application secrets. You start by adding the connection information to the `appsettings.json` file in the `Contoso.WebApi` project, and then add some code to enable the use of Azure Key Vault.
 
@@ -83,7 +77,7 @@ In this task, you update the `Contoso.WebApi` project to use Azure Key Vault for
 
 8. Your Web API is now fully configured to retrieve secrets from Azure Key Vault.
 
-### Task 4: Copy KeyVault configuration section to API App in Azure
+### Task 3: Copy KeyVault configuration section to API App in Azure
 
 Before deploying the Web API to Azure, you need to add the required application settings into the configuration for the Azure API App. In this task, you use the advanced configuration editor in your API App to add in the configuration settings required to connect to and retrieve secrets from Key Vault.
 
@@ -147,7 +141,7 @@ Before deploying the Web API to Azure, you need to add the required application 
 
    ![The Save button is highlighted on the toolbar.](media/api-app-configuration-save.png "Save")
 
-### Task 5: Deploy the API to Azure
+### Task 4: Deploy the API to Azure
 
 In this task, you use Visual Studio to deploy the API project into an API App in Azure.
 

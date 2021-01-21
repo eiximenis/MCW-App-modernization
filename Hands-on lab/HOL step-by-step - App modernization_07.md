@@ -87,13 +87,11 @@ Your environment has a pre-created Service Principal for which details are provi
 ### Task 4: Assign the service principal access to Key Vault
 
 In this task, you assign the service principal you created above to a reader role on your resource group and add an access policy to Key Vault to allow it to view secrets stored there.
-1. Enter the following command at the Cloud Shell prompt, by replacing `<your-subscription-id>` with the value you copied above and `<your-resource-group-name>` with the name of your **hands-on-lab-SUFFIX** resource group, and then press **Enter** to run the command:
+1. Enter the following command at the Cloud Shell prompt, by replacing the `<your-resource-group-name>` with the name of your **hands-on-lab-SUFFIX** resource group, and then press **Enter** to run the command:
 
    ```
-   $subscriptionId = "<your-subscription-id>"
    $resourceGroup = "<your-resource-group-name>"
    ```
-
 
 2. Next, run the following command to get the name of your Key Vault:
 
@@ -114,6 +112,7 @@ In this task, you assign the service principal you created above to a reader rol
 5. In the output, you should see your service principal appId listed with "get" and "list" permissions for secrets.
 
    ![In the output from the command above, the secrets array is highlighted.](media/azure-cloud-shell-az-keyvault-set-policy.png "Azure Cloud Shell")
+   
+6. The Sql2008-UniqueId VM is not needed for the remaining exercises of this hands-on lab, you can close it by clicking on **close** button.
 
-6. The Sql2008-UniqueId VM is not needed for the remaining exercises of this hands-on lab. You can log off of that VM.
-
+   ![In the output from the command above, the secrets array is highlighted.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/close.png?raw=true "Close button")
