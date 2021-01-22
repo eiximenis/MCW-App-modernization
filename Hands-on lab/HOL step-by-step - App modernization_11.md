@@ -211,9 +211,9 @@ In this task, you add Application Insights to your Function App in the Azure Por
 
    ![The View Application Insights data link is highlighted.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/aapinsights1.png?raw=true "View Application Insights data")
 
-7. On the Application Insights blade, select **Live Metrics Stream** from the left-hand menu.
+7. On the Application Insights blade, select **Live Metrics** from the left-hand menu.
 
-   ![Live Metrics Stream is highlighted in the left-hand menu on the Application Insights blade.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/appinsights2.png?raw=true "Application Insights")
+   ![Live Metrics Stream is highlighted in the left-hand menu on the Application Insights blade.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/appinsights.png?raw=true "Application Insights")
 
    > **Note**: You may see a message that your app is offline. You handle this below.
 
