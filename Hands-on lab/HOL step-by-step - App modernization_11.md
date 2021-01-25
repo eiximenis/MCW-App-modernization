@@ -56,22 +56,22 @@ In this task, you create some environment variables on your LabVM, which allows 
 
    ![Adding environment variables via visual studio project settings.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/vsproperties.png?raw=true "Add environment variables")
 
-2. Select the **Debug** tab.
+1. Select the **Debug** tab.
 
-3. In the **Environment Variables** section, choose **Add**, then enter the following:
+1. In the **Environment Variables** section, choose **Add**, then enter the following:
 
    - **Name**: Enter **PolicyStorageSas**
    - **Value**: Paste in the **SAS token** you created and copied into a text editor in the previous exercise.
 
 
-6. Select **Add** again, and in the New User Variable dialog, enter the following:
+1. Select **Add** again, and in the New User Variable dialog, enter the following:
 
    - **Name**: Enter **PolicyStorageUrl**
    - **Value**: Paste in the **URL** of the policies container you copied into a text editor in the previous exercise.
 
    ![Adding environment variables via visual studio project settings.](media/vs-env-variables.png "Add environment variables")
 
-7. Save the project.
+1. Save the project.
 
 ### Task 3: Create an Azure Function in Visual Studio
 
@@ -169,7 +169,7 @@ In this task, you deploy your function into an Azure Function App, where the web
 
    ![In the Publish dialog, Azure is selected and highlighted in the Target box.](media/vs-publish-function-to-azure.png "Publish Function App to Azure")
 
-3. Next, in the **Function instance** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the API App.
+3. Next, in the **Function instance** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the API App **contoso-func-SUFFIX**.
 
    ![In the Publish dialog, The Contoso Function App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/funcapp.png?raw=true "Publish Function App to Azure")
 
@@ -199,9 +199,12 @@ In this task, you add Application Insights to your Function App in the Azure Por
 
    ![The Turn on Application Insights button is highlighted.](media/function-app-add-app-insights.png "Turn on Application Insights for Function App")
 
-4. On the Application Insights blade, select **Create new resource**, accept the default name provided, and then select **Apply**. New resource Name: `contoso-ai-uniqueid`, Location: `westus2`
+4. On the Application Insights blade, select **Create new resource**, provide the following values and then select **Apply**. New resource 
 
-   ![The Create New Application Insights blade is displayed with a unique name set under Create new resource.](media/function-app-app-insights.png "Add Application Insights")
+     - Name: `contoso-ai-uniqueid`
+     - Location: `westus2`
+
+   ![The Create New Application Insights blade is displayed with a unique name set under Create new resource.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/appinsights-1.png?raw=true "Add Application Insights")
 
 5. Select **Yes** when prompted about restarting the Function App to apply monitoring settings.
 
@@ -283,9 +286,9 @@ In this task, you add the URL of your Azure Function App to the Application sett
 
 In this task, you open the PolicyConnect web app and download a policy document. Recall from above that this resulted in a page not found error when you tried it previously.
 
-1. Open a web browser and navigate to the URL for your published Web App.
+1. Open a web browser and navigate to the URL for your published Web App **contoso-web-SUFFIX**.
 
-   > **Note**: You can retrieve the URL from the Overview blade of your Web App resource in the Azure portal if you aren't sure what it is.
+   > **Note**: You can retrieve the URL from the Overview blade of your Web App (contoso-web-SUFFIX) resource in the Azure portal if you aren't sure what it is.
 
    ![The URL field in highlighted on the Web App overview blade.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/webapportal.png?raw=true "Web App")
 

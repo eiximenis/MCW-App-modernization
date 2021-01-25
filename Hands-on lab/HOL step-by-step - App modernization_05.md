@@ -276,7 +276,7 @@ In this task, you use the Azure Cloud shell to retrieve the IP address of the Sq
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/cloud-shell-ps-azure-prompt.png?raw=true "Azure Cloud Shell")
 
-5. At the prompt, enter the following command, **replacing `<your-resource-group-name>`** with the name resource group:
+5. At the prompt, enter the following command, **replacing `<your-resource-group-name>`** with the name of your resource group **hands-on-lab-SUFFIX** :
 
    ```powershell
    $resourceGroup = "<your-resource-group-name>"
@@ -396,16 +396,20 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 18. Review the database migration details.
 
     ![A detailed list of tables included in the migration is displayed.](media/dms-migration-details.png "Database migration details")
+    
+19. Click on close button to navigate back to the MigrateData page.
 
-19. If you received a status of "Warning" for your migration, you can find more details by selecting **Download report** from the ContosoDataMigration screen.
+    ![A detailed list of tables included in the migration is displayed.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/dms-migration-details-1.png?raw=true "Database migration details")
+
+20. If you received a status of "Warning" for your migration, you can find more details by selecting **Download report** from the ContosoDataMigration screen.
 
     ![The Download report button is highlighted on the DMS Migration toolbar.](media/dms-toolbar-download-report.png "Download report")
 
     > **Note**: The **Download report** button will be disabled if the migration completed without warnings or errors.
 
-20. The reason for the warning can be found in the Validation Summary section. In the report below, you can see that a storage object schema difference triggered a warning. However, the report also reveals that everything was migrated successfully.
+21. The reason for the warning can be found in the Validation Summary section. In the report below, you can see that a storage object schema difference triggered a warning. However, the report also reveals that everything was migrated successfully.
 
     ![The output of the database migration report is displayed.](media/dms-migration-wizard-report.png "Database migration report")
 
-21. Click on **Next** button.
+22. Click on **Next** button.
 
