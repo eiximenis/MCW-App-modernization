@@ -45,7 +45,7 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 8. Next, you execute a script in SSMS, which resets the `sa` password, enable mixed mode authentication, create the `WorkshopUser` account, and change the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
 
-  ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+    ![The New Query button is highlighted in the SSMS toolbar.](./media/ssms-new-query.png "SSMS Toolbar")
 
 9. Copy and paste the SQL script below into the new query window:
 
@@ -88,15 +88,15 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 10. To run the script, select **Execute** from the SSMS toolbar.
 
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+    ![The Execute button is highlighted in the SSMS toolbar.](./media/ssms-execute.png "SSMS Toolbar")
 
 11. For Mixed Mode Authentication and the new `sa` password to take effect, you must restart the SQL Server (MSSQLSERVER) Service on the Sql2008-UniqueId VM. To do this, you can use SSMS. Right-click the SQL2008-UniqueId instance in the SSMS Object Explorer, and then select **Restart** from the context menu.
 
-    ![In the SSMS Object Explorer, the context menu for the SQL2008-UniqueId instance is displayed, and Restart is highlighted.](media/ssms-object-explorer-restart-sqlserver2008.png "Object Explorer")
+    ![In the SSMS Object Explorer, the context menu for the SQL2008-UniqueId instance is displayed, and Restart is highlighted.](./media/ssms-object-explorer-restart-sqlserver2008.png "Object Explorer")
 
 12. When prompted about restarting the MSSQLSERVER service, select **Yes**. The service takes a few seconds to restart.
 
-    ![The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service.](media/ssms-restart-service.png "Restart MSSQLSERVER service")
+    ![The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service.](./media/ssms-restart-service.png "Restart MSSQLSERVER service")
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
