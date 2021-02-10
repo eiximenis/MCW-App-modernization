@@ -134,7 +134,7 @@ In this task, you enable [Dynamic Data Masking](https://docs.microsoft.com/sql/r
 
 7. Once connected, expand Databases, right-click the `ContosoInsurance` database and select **New Query**.
 
-   ![In the SSMS Object explorer, the context menu for the ContosoInsurance database is displayed, and New Query is highlighted.](media/ssms-database-new-query.png "SSMS")
+   ![In the SSMS Object explorer, the context menu for the ContosoInsurance database is displayed, and New Query is highlighted.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/ssms.png?raw=true "SSMS")
 
 8. To be able to test the mask applied to the `people.DOB` field, you need to create a user in the database that can be used for testing the masked field. This is because the `demouser` account you used to log in is a privileged user, so the mask is not be applied. In the new query window, paste the following SQL script into the new query window:
 
