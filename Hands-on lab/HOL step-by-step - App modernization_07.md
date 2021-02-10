@@ -54,7 +54,7 @@ In this task, you add a secret to Key Vault containing the connection string for
 5. Your connection string should now resemble the following:
 
    ```csharp
-   Server=tcp:contosoinsurance-jt7yc3zphxfda.database.windows.net,1433;Initial Catalog=ContosoInsurance;Persist Security Info=False;User ID=demouser;Password=Password.1!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+   Server=tcp:contosoinsurance-294876.database.windows.net,1433;Initial Catalog=ContosoInsurance;Persist Security Info=False;User ID=demouser;Password=Password.1!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
 6. Copy your updated connection string from the text editor.
