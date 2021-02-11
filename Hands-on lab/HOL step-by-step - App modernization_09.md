@@ -35,7 +35,7 @@ In this task, you prepare your Web App to work with the API App by adding the UR
 
 6. Next replace the tokenized values in the following command as specified below, and then run it from the Azure Cloud Shell command prompt.
 
-   - `<your-web-app-name>`: Replace with your Function App name, which you copied in the previous step.
+   - `<your-web-app-name>`: Replace with your web App name, which you copied in the previous step.
    - `<your-api-default-host-name>`: Replace with the default hostname of your API app that you copied into a text editor previously.
 
    ```powershell
