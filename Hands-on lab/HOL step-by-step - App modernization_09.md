@@ -31,7 +31,7 @@ In this task, you prepare your Web App to work with the API App by adding the UR
 
 5. In the output, copy two values for use in the next step. Copy the **DefaultHostName** value for your API App (the resource name starts with contoso-**api**) and also copy the Web App **Name** value (the resource name starts with contoso-**web**).
 
-   ![The Web App Name and API App DefaultHostName values are highlighted in the output of the command above.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/webapp7.png?raw=true "Azure Cloud Shell")
+   ![The Web App Name and API App DefaultHostName values are highlighted in the output of the command above.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/webapp7-new.png?raw=true "Azure Cloud Shell")
 
 6. Next replace the tokenized values in the following command as specified below, and then run it from the Azure Cloud Shell command prompt.
 
