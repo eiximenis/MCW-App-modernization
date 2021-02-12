@@ -63,7 +63,7 @@ In this task, you publish the `Contoso.Web` application into an Azure Web App.
 
     ![Publish in highlighted in the context menu for the Contoso.Web project.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/nuget3.png?raw=true "Publish")
 
-4. On the **License Acceptance** blade, click on **I Agree**
+4. On the **License Acceptance** blade, click on **I Accept**
 
     ![Publish in highlighted in the context menu for the Contoso.Web project.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/nuget4.png?raw=true "Publish")
 
