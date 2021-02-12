@@ -85,7 +85,7 @@ In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us
 
 7. In the output of the command, you should see that 650 files were transferred successfully.
 
-  ![The output of the AzCopy command is displayed.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/e5-06.png?raw=true "AzCopy output")
+     ![The output of the AzCopy command is displayed.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/e5-06.png?raw=true "AzCopy output")
 
 8. You can verify the upload by navigating to the policies container in your Azure Storage account.
 
