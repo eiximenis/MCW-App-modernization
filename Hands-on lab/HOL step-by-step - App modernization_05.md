@@ -327,7 +327,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
    - **Project name**: Enter DataMigration
    - **Source server type**: Select SQL Server.
    - **Target server type**: Select Azure SQL Database.
-   - **Choose type of activity**: Let it be on default i.e. **Offline data migration**.
+   - **Choose type of activity**: **Data Migration**.
 
    ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
 
@@ -343,9 +343,11 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
    ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration1.png?raw=true "Migration Wizard Select source")
 
-6. Select **Next : Select target**.
+1. On the Migration Wizard  **Select Database** blade, select **ContosoInsurance** database.
 
-7. On the Migration Wizard **Select target** blade, enter the following:
+1. Select **Next : Select target**.
+
+1. On the Migration Wizard **Select target** blade, enter the following:
 
    - **Target server name**: Enter the `fullyQualifiedDomainName` value of your Azure SQL Database (e.g., contosoinsurance-288892.database.windows.net), which you copied in the previous task.
    - **Authentication type**: Select SQL Authentication.
@@ -355,61 +357,61 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
    ![The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration2.png?raw=true "Migration Wizard Select target")
 
-8. Select **Next : Map to target databases**.
+1. Select **Next : Map to target databases**.
 
-9. On the Migration Wizard **Map to target databases** blade, confirm that **ContosoInsurance** is checked as the source database, and that it is also the target database on the same line.
+1. On the Migration Wizard **Map to target databases** blade, confirm that **ContosoInsurance** is checked as the source database, and that it is also the target database on the same line.
 
    ![The Migration Wizard Map to target database blade is displayed, with the ContosoInsurance line highlighted.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration3.png?raw=true "Migration Wizard Map to target databases")
 
-10. Select **Next : Configure migration settings**.
+1. Select **Next : Configure migration settings**.
 
-11. On the Migration Wizard **Configure migration settings** blade, expand the **ContosoInsurance** database and verify all the tables are selected.
+1. On the Migration Wizard **Configure migration settings** blade, expand the **ContosoInsurance** database and verify all the tables are selected.
 
     ![The Migration Wizard Configure migration settings blade is displayed, with the expand arrow for ContosoInsurance highlighted, and all the tables checked.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration4.png?raw=true "Migration Wizard Configure migration settings")
 
-12. Select **Next : Summary**.
+1. Select **Next : Summary**.
 
-13. On the Migration Wizard **Summary** blade, enter the following:
+1. On the Migration Wizard **Summary** blade, enter the following:
 
     - **Activity name**: Enter ContosoDataMigration
 
     ![The Migration Wizard summary blade is displayed, with ContosoDataMigration entered into the name field.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration5.png?raw=true "Migration Wizard Summary")
 
-14. Select **Start migration**.
+1. Select **Start migration**.
 
-15. Monitor the migration on the status screen that appears. Select the refresh icon in the toolbar to retrieve the latest status.
+1. Monitor the migration on the status screen that appears. Select the refresh icon in the toolbar to retrieve the latest status.
 
     ![On the Migration job blade, the Refresh button is highlighted, and a status of Full backup uploading is displayed and highlighted.](media/dms-migration-wizard-status-running.png "Migration status")
 
     > The migration takes approximately 2 - 3 minutes to complete.
 
-16. When the migration is complete, you should see the status as **Completed**, but may also see a status of **Warning**.
+1. When the migration is complete, you should see the status as **Completed**, but may also see a status of **Warning**.
 
     ![On the Migration job blade, the status of Completed is highlighted.](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
 
     ![On the Migration job blade, the status of Completed is highlighted.](media/dms-migration-wizard-status-warning.png "Migration with Warning status")
 
-17. When the migration is complete, select the **ContosoInsurance** migration item.
+1. When the migration is complete, select the **ContosoInsurance** migration item.
 
     ![The ContosoInsurance migration item is highlighted on the ContosoDataMigration blade.](media/dms-migration-completion.png "ContosoDataMigration details")
 
-18. Review the database migration details.
+1. Review the database migration details.
 
     ![A detailed list of tables included in the migration is displayed.](media/dms-migration-details.png "Database migration details")
     
-19. Click on close button to navigate back to the MigrateData page.
+1. Click on close button to navigate back to the MigrateData page.
 
     ![A detailed list of tables included in the migration is displayed.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/local/dms-migration-details-1.png?raw=true "Database migration details")
 
-20. If you received a status of "Warning" for your migration, you can find more details by selecting **Download report** from the ContosoDataMigration screen.
+1. If you received a status of "Warning" for your migration, you can find more details by selecting **Download report** from the ContosoDataMigration screen.
 
     ![The Download report button is highlighted on the DMS Migration toolbar.](media/dms-toolbar-download-report.png "Download report")
 
     > **Note**: The **Download report** button will be disabled if the migration completed without warnings or errors.
 
-21. The reason for the warning can be found in the Validation Summary section. In the report below, you can see that a storage object schema difference triggered a warning. However, the report also reveals that everything was migrated successfully.
+1. The reason for the warning can be found in the Validation Summary section. In the report below, you can see that a storage object schema difference triggered a warning. However, the report also reveals that everything was migrated successfully.
 
     ![The output of the database migration report is displayed.](media/dms-migration-wizard-report.png "Database migration report")
 
-22. Click on **Next** button.
+1. Click on **Next** button.
 
