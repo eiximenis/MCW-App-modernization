@@ -327,9 +327,9 @@ At this point, you have migrated the database schema using DMA. In this task, yo
    - **Project name**: Enter DataMigration
    - **Source server type**: Select SQL Server.
    - **Target server type**: Select Azure SQL Database.
-   - **Choose type of activity**: **Data Migration**.
+   - **Choose type of activity**: Select **Data Migration**.
 
-   ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
+   ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration-1.png?raw=true "New migration project")
 
 4. Select **Create and run activity**.
 
@@ -344,6 +344,8 @@ At this point, you have migrated the database schema using DMA. In this task, yo
    ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration1.png?raw=true "Migration Wizard Select source")
 
 1. On the Migration Wizard  **Select Database** blade, select **ContosoInsurance** database.
+
+   ![](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/migration-2.png?raw=true)
 
 1. Select **Next : Select target**.
 
