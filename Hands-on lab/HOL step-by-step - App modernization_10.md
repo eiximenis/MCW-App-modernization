@@ -28,30 +28,8 @@ In this task, you create a new blob container in your storage account for the sc
 
    ![Access Keys is selected on the Storage account. On the blade, access keys and buttons to copy are displayed](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/storageaccount2.png?raw=true "Access Keys")
 
-### Task 2: Create a SAS token
 
-In this task, you generate a shared access signature (SAS) token for your storage account. This is used later in the lab to allow your Azure Function to retrieve files from the `policies` storage account container.
-
-1. On your Storage account blade in the Azure portal, and select **Shared access signature** from the left-hand menu.
-
-   ![The Shared access signature menu item is highlighted.](media/storage-shared-access-signature.png "Storage account")
-
-2. On the Shared access signature blade, set the following configuration:
-
-   - **Allowed services**: Select **Blob** and uncheck all other services.
-   - **Allowed resource types**: Uncheck **Service** and check **Container** and **Object**.
-   - **Allowed permissions**: Select **Read** and **List** and uncheck all the other boxes.
-   - **Expiry date/time End**: Select this and choose a date a few days or weeks in the future. For this hands-on lab, the date can be any date/time beyond when you plan on completing the lab.
-
-   ![The SAS token configuration settings specified above are entered into the Generate SAS form.](media/storage-sas-token-config.png "Shared access signature configuration")
-
-3. Select **Generate SAS and connection string** and then copy the SAS token value by selecting the Copy to clipboard button to the right of the value.
-
-   ![On the Share access signature blade, the Generate SAS and connection string button is highlighted, and the copy to clipboard button is highlighted to the right of the SAS token value.](media/storage-shared-access-signature-generate.png "Shared access signature")
-
-4. Paste the SAS token into a text editor for later use.
-
-### Task 3: Bulk upload PDFs to blob storage using AzCopy
+### Task 2: Bulk upload PDFs to blob storage using AzCopy
 
 In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy). You then use AzCopy to copy the PDF files from the "on-premises" location into the policies container in Azure storage.
 
