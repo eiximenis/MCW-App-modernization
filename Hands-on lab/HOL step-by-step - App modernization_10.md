@@ -69,7 +69,7 @@ In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us
 
 5. Enter the following command at the command prompt. The tokenized values should be replaced as follows:
 
-   - `[FILE-SOURCE]`: This is the path to the `policy-documents` folder your downloaded copy of the GitHub repo. If you used the extraction path of `C:\MCW`, the path is `C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\policy-documents`.
+   - `[FILE-SOURCE]`: This is the path to the `policy-documents` folder your downloaded copy of the GitHub repo. If you used the extraction path of `C:\MCW`, the path is `C:\MCW\MCW-App-modernization-prod\Hands-on lab\lab-files\policy-documents`.
    - `[STORAGE-CONTAINER-URL]`: This is the URL to your storage account's policies container, which you copied in the last step of the previous task. (e.g., <https://contoso281470.blob.core.windows.net/policies>)
    - `[STORAGE-ACCOUNT-KEY]`: This is the blob storage account key you copied previously in this task. (e.g., `eqgxGSnCiConfgshXQ1rFwBO+TtCH6sduekk6s8PxPBxHWOmFumycTeOlL3myb8eg4Ba2dn7rtdHnk/1pi6P/w==`)
 
@@ -80,7 +80,7 @@ In this task, you download and install [AzCopy](https://docs.microsoft.com/en-us
 6. The final command should resemble the following:
 
    ```bash
-   AzCopy /Source:"C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\policy-documents" /Dest:"https://contoso281470.blob.core.windows.net/policies" /DestKey:"XJT3us2KT1WQHAQBbeotrRCWQLZayFDNmhLHt3vl2miKOHeXasB7IUlw2+y4afH6R/03wbTiRK9SRqGXt9JVqQ==" /S
+   AzCopy /Source:"C:\MCW\MCW-App-modernization-prod\Hands-on lab\lab-files\policy-documents" /Dest:"https://contoso281470.blob.core.windows.net/policies" /DestKey:"XJT3us2KT1WQHAQBbeotrRCWQLZayFDNmhLHt3vl2miKOHeXasB7IUlw2+y4afH6R/03wbTiRK9SRqGXt9JVqQ==" /S
    ```
 
 7. In the output of the command, you should see that 650 files were transferred successfully.
