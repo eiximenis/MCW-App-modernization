@@ -18,7 +18,7 @@ In this task, you open the `Contoso` starter solution in Visual Studio. The Visu
 
 1. In File Explorer, navigate to `C:\MCW\MCW-App-modernization-prod\Hands-on lab\lab-files\src` and double-click the `Contoso.sln` file to open the solution in Visual Studio.
 
-   ![The Contoso.sln file is highlighted in the folder specified above.](media/file-explorer-vs-solution.png "File explorer")
+   ![The Contoso.sln file is highlighted in the folder specified above.](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/fix/Hands-on%20lab/media/local/appmod-01.png?raw=true "File explorer")
 
 2. If prompted about how to open the file, select **Visual Studio 2019** and then select **OK**.
 
