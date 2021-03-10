@@ -16,7 +16,7 @@ In this task, you open the `Contoso` starter solution in Visual Studio. The Visu
 
 > **Note**: Make sure you are performing the below tasks in LabVM.
 
-1. In File Explorer, navigate to `C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\src` and double-click the `Contoso.sln` file to open the solution in Visual Studio.
+1. In File Explorer, navigate to `C:\MCW\MCW-App-modernization-prod\Hands-on lab\lab-files\src` and double-click the `Contoso.sln` file to open the solution in Visual Studio.
 
    ![The Contoso.sln file is highlighted in the folder specified above.](media/file-explorer-vs-solution.png "File explorer")
 
