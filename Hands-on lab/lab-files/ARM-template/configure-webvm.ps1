@@ -104,14 +104,14 @@ $Shortcut.Save()
 
 
 #.Net 4.8
-$WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://go.microsoft.com/fwlink/?linkid=2088631","C:\ndp48-web.exe")
-Start-Process -file 'C:\ndp48-web.exe' -arg "/q /norestart /ACCEPTEULA=1"
-sleep 20
+#$WebClient = New-Object System.Net.WebClient
+#$WebClient.DownloadFile("https://go.microsoft.com/fwlink/?linkid=2088631","C:\ndp48-web.exe")
+#Start-Process -file 'C:\ndp48-web.exe' -arg "/q /norestart /ACCEPTEULA=1"
+#sleep 20
 
 # Download and install Data Mirgation Assistant
-(New-Object System.Net.WebClient).DownloadFile('https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi', 'C:\DataMigrationAssistant.msi')
-Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
+#(New-Object System.Net.WebClient).DownloadFile('https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi', 'C:\DataMigrationAssistant.msi')
+#Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
 
 
 Restart-Computer
