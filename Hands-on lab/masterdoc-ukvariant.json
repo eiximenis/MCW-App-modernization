@@ -1,0 +1,39 @@
+[ {
+  "Name": ".Net App modernization",
+  "Language": "English",
+  "Files": [
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/fix/Hands-on%20lab/GettingStarted.md",
+      "Order": 1
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/uk-variant-2021/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_03.md",
+      "Order": 2
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/uk-variant-2021/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_05.md",
+      "Order": 3
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/uk-variant-2021/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_06.md",
+      "Order": 4
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/uk-variant-2021/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_07.md",
+      "Order": 5
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/uk-variant-2021/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_09.md",
+      "Order": 6
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/uk-variant-2021/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_08.md",
+      "Order": 7
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-App-modernization/fix/Hands-on%20lab/lab-completed.md",
+      "Order": 8
+    }
+  ]
+}
+]

@@ -1,4 +1,4 @@
-## Solution architecture
+# Solution architecture
 
 Below is a high-level architecture diagram of the solution you implement in this hands-on lab. Please review this carefully, so you understand the whole of the solution as you are working on the various components.
 
@@ -11,4 +11,3 @@ The solution begins with setting up Azure Migrate as the central assessment and 
 Next, Parts Unlimited sets up a private GitHub repository and pushes their codebase to GitHub. They set up deployment slots to have a staging environment to test functionality before releasing to production. As a CI/CD solution, they decide to use GitHub Actions and Workflows.
 
 Finally, Parts Unlimited decides to decouple its order processing system and move to an event-driven serverless compute platform. Following a [web-queue-worker architecture](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/web-queue-worker), they build an Azure Function and use Azure Storage Queue to process orders and create invoices asynchronously. When new orders come in, the web front end adds jobs into the queue consumed by Azure Functions. The Functions App scales independently based on the number of jobs in the queue, helping Parts Unlimited elastically handle a variable amount of orders.
-
