@@ -84,16 +84,18 @@ $pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart }
 Invoke-Command -ScriptBlock $pathArgs 
 
 # Install dotnetcore 4.8
-Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/014120d7-d689-4305-befd-3cb711108212/0fd66638cde16859462a6243a4629a50/ndp48-x86-x64-allos-enu.exe' -OutFile 'C:\ndp48-x86-x64-allos-enu.exe'
-$pathArgs = {C:\ndp48-x86-x64-allos-enu.exe /Install /Quiet /Norestart }
-Invoke-Command -ScriptBlock $pathArgs
+#Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/014120d7-d689-4305-befd-3cb711108212/0fd66638cde16859462a6243a4629a50/ndp48-x86-x64-allos-enu.exe' -OutFile 'C:\ndp48-x86-x64-allos-enu.exe'
+#$pathArgs = {C:\ndp48-x86-x64-allos-enu.exe /Install /Quiet /Norestart }
+#Invoke-Command -ScriptBlock $pathArgs
 
 #.Net 4.8
-$WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://go.microsoft.com/fwlink/?linkid=2088631","C:\ndp48-web.exe")
-Start-Process -file 'C:\ndp48-web.exe' -arg "/q /norestart /ACCEPTEULA=1"
+#$WebClient = New-Object System.Net.WebClient
+#$WebClient.DownloadFile("https://go.microsoft.com/fwlink/?linkid=2088631","C:\ndp48-web.exe")
+#Start-Process -file 'C:\ndp48-web.exe' -arg "/q /norestart /ACCEPTEULA=1"
 sleep 20
 
 # Download and install Data Mirgation Assistant
-Invoke-WebRequest 'https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi' -OutFile 'C:\DataMigrationAssistant.msi'
-Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
+#Invoke-WebRequest 'https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi' -OutFile 'C:\DataMigrationAssistant.msi'
+#Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
+
+Restart-Computer
