@@ -94,7 +94,7 @@ Invoke-Command -ScriptBlock $pathArgs
 #Start-Process -file 'C:\ndp48-web.exe' -arg "/q /norestart /ACCEPTEULA=1"
 sleep 20
 
-Download and install Data Mirgation Assistant
+#Download and install Data Mirgation Assistant
 Invoke-WebRequest 'https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi' -OutFile 'C:\DataMigrationAssistant.msi'
 Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
 
