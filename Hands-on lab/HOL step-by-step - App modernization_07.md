@@ -87,7 +87,7 @@ Parts Unlimited would like an assessment to see what potential issues they might
 
 1. Select the **Databases (1)** page on Azure Migrate. Observe the number of assessed database instances **(2)** and the number of databases ready for Azure SQL DB **(2)**. Keep in mind that you might need to wait for 5 to 10 minutes for results to show up. You can use the **Refresh** button on the page to see the latest status.
 
-    ![Azure Migrate Databases page is open. The number of assessed database instances and the number of databases ready for Azure SQL DB shows one.](media/dma-azure-migrate-web.png "Azure Migrate Database Assessment")
+    ![Azure Migrate Databases page is open. The number of assessed database instances and the number of databases ready for Azure SQL DB shows one.](media/dma-azure-migrate-web-2.png "Azure Migrate Database Assessment")
 
 ## Task 2: Retrieve connection information for SQL Databases
 
