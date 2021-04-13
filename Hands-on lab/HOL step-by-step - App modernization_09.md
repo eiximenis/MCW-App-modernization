@@ -1,4 +1,4 @@
-# Exercise 4: Using serverless Azure Functions to process orders
+# Exercise 5: Using serverless Azure Functions to process orders
 
 Duration: 30 minutes
 
