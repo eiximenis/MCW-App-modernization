@@ -1,4 +1,4 @@
-# Exercise 5: Setup CI/CD pipeline with GitHub Actions for the web app
+# Exercise 4: Setup CI/CD pipeline with GitHub Actions for the web app
 
 Duration: 55 minutes
 
