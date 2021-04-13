@@ -32,6 +32,7 @@ function Wait-Install {
         Start-Sleep -Seconds 1
     }
 }
+Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
 
 # To resolve the error of https://github.com/microsoft/MCW-App-modernization/issues/68. The cause of the error is Powershell by default uses TLS 1.0 to connect to website, but website security requires TLS 1.2. You can change this behavior with running any of the below command to use all protocols. You can also specify single protocol.
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
@@ -47,11 +48,13 @@ $branchName = "master"
 # Download and extract the starter solution files
 # ZIP File sometimes gets corrupted
 New-Item -ItemType directory -Path C:\MCW
-while((Get-ChildItem -Directory C:\MCW | Measure-Object).Count -eq 0 )
-{
-    (New-Object System.Net.WebClient).DownloadFile("https://github.com/microsoft/MCW-App-modernization/archive/$branchName.zip", 'C:\MCW.zip')
-    Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
-}
+#while((Get-ChildItem -Directory C:\MCW | Measure-Object).Count -eq 0 )
+#{
+#    (New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/archive/$branchName.zip", 'C:\MCW.zip')
+#    Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
+#}
+(New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/archive/stage.zip", 'C:\MCW.zip')
+Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
 
 # Copy Web Site Files
 Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\web-site-publish.zip" -DestinationPath 'C:\inetpub\wwwroot' -Force
@@ -59,8 +62,7 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on l
 # Replace SQL Connection String
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
 
-(New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/archive/stage.zip", 'C:\MCW.zip')
-Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
+
 
 
 # Downloading Deferred Installs
