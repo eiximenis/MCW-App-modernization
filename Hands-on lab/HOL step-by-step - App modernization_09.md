@@ -17,7 +17,7 @@ You suggest a serverless approach that can handle order processing and the creat
 
     ![File menu is open in Visual Studio Code. Open Folder... command is highlighted.](media/vscode-open-folder.png "Open Folder")
 
-1. Navigate to `C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\src-invoicing-functions\FunctionApp` and select **Select Folder**.
+1. Navigate to `C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\src-invoicing-functions\FunctionApp` and select **Select Folder**.
 
 1. Select **Install** to install extensions required for your Azure Functions project. This will install C# for Visual Studio Code and Azure Functions Extension for Visual Studio Code.
 
