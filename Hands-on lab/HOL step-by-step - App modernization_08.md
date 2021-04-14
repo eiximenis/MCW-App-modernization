@@ -27,7 +27,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 1. The Parts Unlimited website's source code is already copied into the VM as part of the **Before the hands-on lab exercises**. Run the command below to navigate to the source code folder.
 
     ```powershell
-    cd "C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\src"
+    cd "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\src"
     ```
 
 1. Run the following command to initialize a local Git repository.
@@ -233,9 +233,9 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
     ![File menu is open in Visual Studio Code. Open Folder... command is highlighted.](media/vscode-open-folder.png "Open Folder")
 
-1. Navigate to `C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\src` and select **Select Folder (1)**.
+1. Navigate to `C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\src` and select **Select Folder (1)**.
 
-    ![Visual Studio Code Open Folder dialog is open. Folder path is set to C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\src and Select Folder button is highlighted.](media/vscode-select-folder.png "Select Folder")
+    ![Visual Studio Code Open Folder dialog is open. Folder path is set to C:\MCW\MCW-App-modernization-master\Hands-on lab\lab-files\src and Select Folder button is highlighted.](media/vscode-select-folder-2.png "Select Folder")
 
 1. Select **Source Control (1)** tab in Visual Studio Code. Since we worked on the codebase in our repo in the virtual machine, the codebase in the repo on GitHub has changed. Open the **Views and more actions... (2)** menu and select **Pull (3)** to get the latest from the remote repository.
 
