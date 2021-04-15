@@ -10,12 +10,6 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
    ![Edge as default browser](media/Edge-DefaultBrowser.png "Set Edge as Default Browser")
 
-1. Within settings, set the Region and Language to the required setting as shown below
-
-   ![Change Region](media/RegionChange.png "set Region")
-
-   ![Change Language](media/LanguageChange.png "Set Language")
-
 1. Open Edge Browser and log in to the Azure portal using the address <https://portal.azure.com>. When prompted, use the credentials provided within the **Environment Details** tab of the lab guide.
 
     ![Azure Portal Home](media/AzurePortal.png "Azure Portal Home")
