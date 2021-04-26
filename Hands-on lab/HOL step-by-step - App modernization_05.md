@@ -104,8 +104,8 @@ Contoso would like an assessment to see what potential issues they might need to
 
 > **Note**: The Database Migration Assistant should be installed on your Sql2008-UniqueId VM. If the Database Migration Assistant is not installed, follow the steps below to install it.
 
-  - Navigate to `C:\` drive and find the DataMigrationAssitant.exe file as shown below and
-    install the assistant by selecting `Next -> I accept the terms in the License Agreement -> Next -> Install -> Finish.` 
+  - Navigate to `C:\` drive and find the **DataMigrationAssitant.exe** file as shown below and
+    install the assistant by selecting **`Next -> I accept the terms in the License Agreement -> Next -> Install -> Finish.`**
 
     ![DMA path](./media/dma-downloaded-file-path.png "DMA path")
 
