@@ -102,7 +102,14 @@ Before you begin the assessment, you need to configure the `ContosoInsurance` da
 
 Contoso would like an assessment to see what potential issues they might need to address in moving their database to Azure SQL Database. In this task, you use the [Microsoft Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) (DMA) to perform an assessment of the `ContosoInsurance` database against Azure SQL Database (Azure SQL DB). Data Migration Assistant (DMA) enables you to upgrade to a modern data platform by detecting compatibility issues that can impact database functionality on your new version of SQL Server or Azure SQL Database. It recommends performance and reliability improvements for your target environment. The assessment generates a report detailing any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-> **Note**: The Database Migration Assistant has already been installed on your Sql2008-UniqueId VM. It can also be downloaded from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595).
+> **Note**: The Database Migration Assistant should be installed on your Sql2008-UniqueId VM. If the Database Migration Assistant is not installed, follow the steps below to install it.
+
+  - Navigate to `C:\` drive and find the DataMigrationAssitant.exe file as shown below and
+    install the assistant by selecting `**Next** -> **I accept the terms in the License Agreement** -> **Next** -> **Install** -> **Finish**.` 
+
+    ![DMA path](./media/dma-downloaded-file-path.png "DMA path")
+
+  - It can also be downloaded from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595).
 
 1. On the Sql2008-UniqueId VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
 
