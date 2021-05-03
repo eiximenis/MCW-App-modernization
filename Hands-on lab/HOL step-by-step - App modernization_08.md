@@ -162,7 +162,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
     ![The main_partsunlimited-web-20(staging).yml file is on screen. Edit this file button is highlighted.](media/github-yaml-edit.png "Workflow YAML Editing")
 
-1. We have to change the **dotnet-version (1)** number to `2.2.207`. Additionally, we have to add the solution file name **(2)** and the project file name **(3)** to dotnet build and publish commands. The reason behind this change is the fact that Parts Unlimited has multiple solutions and projects in their codebase.
+1. We have to change the **dotnet-version (1)** number to `2.2.207`. Additionally, we have to add the solution file name **(2)** and the project file name **(3)** to dotnet build and publish commands. The reason behind this change is the fact that Parts Unlimited has multiple solutions and projects in their codebase. Name the commit as **CI/CD Definition Update**.
 
     ![main_partsunlimited-web-20(staging).yml is open in edit mode. dotnet-version is set to 2.2.207. dotnet build command is changed to include PartsUnlimited.sln as a parameter. dotnet publish command is changed to include src/PartsUnlimitedWebsite/PartsUnlimitedWebsite.csproj as a parameter.](media/github-yaml-commit.png "GitHub YAML Editing")
 
