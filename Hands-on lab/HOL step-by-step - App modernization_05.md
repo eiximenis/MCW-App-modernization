@@ -14,11 +14,15 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
     ![Azure Portal Home](media/AzurePortal.png "Azure Portal Home")
 
-1. Select **Add** to add a new resource.
+1. Select your **resource group**. 
+
+    ![Select your resource group.](media/resource-group-1.png "Resource Group")
+
+1. Select **Add** inside the resource group to add a new resource.
 
     ![Lab resource group is open. Resource Add button is highlighted.](media/portal-add-resource.png "Lab Resource Group")
 
-1. Type **Azure Migrate** into the search box and hit **Enter** to start the search.
+1. Type **Azure Migrate** into the search box and select **Azure Migrate** from the dropdown.
 
     ![Azure Portal new resource page is open. Search box is filled with Azure Migrate.](media/azure-migrate-search.png "Marketplace Search for Azure Migrate")
 
@@ -34,7 +38,9 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
     ![Azure Migrate is open. Web Apps section is selected. Create project button is highlighted.](media/azure-migrate-create-project-2.png "Azure Migrate Create project")
 
-1. Type **partsunlimitedweb** as your project name. Select **Create** to continue.
+1. Type **partsunlimitedwebDID** as your project name. Select **Create** to continue. 
+
+       Where DID is your deployment Id, which can be found in the environment details page.
 
     ![Azure Migrate project settings page is shown. Project name is set to partsunlimitedweb. Create button is highlighted.](media/azure-migrate-create-project-settings.png "Azure Migrate Project Creation")
 
