@@ -115,7 +115,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
     ![Deployment slots are listed. Staging slot named partsunlimited-web-20-staging is highlighted.](media/app-service-staging-select.png "Staging deployment slot")
 
-1. Switch to the **Deployment Center (1)** tab. Select **Go to Settings (2)**.
+1. Switch to the **Deployment Center (1)** tab.
 
     ![Deployment Center tab is selected. Go to Settings button is highlighted.](media/app-service-goto-deployment-settings.png "Deployment Center")
 
