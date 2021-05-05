@@ -10,7 +10,7 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
    ![Edge as default browser](media/Edge-DefaultBrowser.png "Set Edge as Default Browser")
 
-1. Open the Azure portal from the shortcut and log in to the Azure portal. When prompted, use the credentials provided within the **Environment Details** tab of the lab guide.
+1. Open the **Azure portal** from the shortcut and log in to Azure. When prompted, use the credentials provided within the **Environment Details** tab of the lab guide.
 
     ![Azure Portal shorcut](media/azure-portal-start.png "Azure Portal shortcut")
 
