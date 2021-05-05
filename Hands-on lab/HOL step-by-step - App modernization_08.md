@@ -256,8 +256,12 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 1. Open the GitHub repository and observe the Actions page for the latest execution of the CI/CD Pipeline.
 
     ![PartsUnlimited repo is open. Actions page is shown. Successful CI/CD run for the new home page title is highlighted.](media/github-actions-success-commit.png "New commit build")
+    
+1. Navigate to the staging environment endpoint by clicking on the link under **deploy**.
 
-1. Navigate to the staging environment endpoint in your browser and observe the Title change.
+    ![New homepage title is open. Deploy and the webpage link is highlighted.](media/github-action-staging.png "link to the website")
+
+1. Observe the Title change.
 
     ![Parts Unlimited staging environment is open in a browser. New Home Page title is highlighted.](media/staging-code-changes.png "Parts Unlimited Staging Web Site")
 
