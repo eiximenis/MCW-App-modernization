@@ -26,6 +26,8 @@ You suggest a serverless approach that can handle order processing and the creat
 1. Once install is **Finished (1)** select **Restore (2)** to download dependencies for the project.
 
     ![Visual Studio Code is on screen. Restore dependencies button is highlighted.](media/vscode-restore-dependencies.png ".NET Restore")
+    
+        - If the C# extension is aready present in VS code, it may not ask you to restore.
 
 1. When restore is complete close the tabs titled **Extension (1) (2)** and the **welcome tab (3)**. Select **Azure (4)** from the left menu and select **Sign into Azure (5)**. Select **Edge** as your browser if requested.
 
