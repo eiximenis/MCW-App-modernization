@@ -83,6 +83,14 @@ sleep 5
 $pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart }
 Invoke-Command -ScriptBlock $pathArgs 
 
+# Azure Portal shortcut
+$WshShell = New-Object -comObject WScript.Shell
+$Shortcut = $WshShell.CreateShortcut("C:\Users\Public\Desktop\Azure Portal.lnk")
+$Shortcut.TargetPath = """C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"""
+$argA = """https://portal.azure.com"""
+$Shortcut.Arguments = $argA
+$Shortcut.Save()
+
 # Install dotnetcore 4.8
 #Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/014120d7-d689-4305-befd-3cb711108212/0fd66638cde16859462a6243a4629a50/ndp48-x86-x64-allos-enu.exe' -OutFile 'C:\ndp48-x86-x64-allos-enu.exe'
 #$pathArgs = {C:\ndp48-x86-x64-allos-enu.exe /Install /Quiet /Norestart }
