@@ -208,7 +208,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 1. On the Migration Wizard **Select source** blade, enter the following:
 
-   - **Source SQL Server instance name (1)**: Enter the DNS address of your Sql Server. This can be retrieved from environment details section of your guide. For example, `sqlserver2008-{suffixid}.eastus2.cloudapp.azure.com`.
+   - **Source SQL Server instance name (1)**: Enter the DNS address of your Sql Server. This can be retrieved from environment details section of your guide. For example, `sqlserver2008-{suffixid}.eastus2.cloudapp.azure.com`. <inject key="SQLVM DNS Name" enableCopy="false"/>
    - **Authentication type (2)**: Select SQL Authentication.
    - **Username (3)**: Enter **PUWebSite**
    - **Password (4)**: Enter **Password.1!!**
