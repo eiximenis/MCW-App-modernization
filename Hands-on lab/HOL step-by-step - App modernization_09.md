@@ -37,7 +37,8 @@ You suggest a serverless approach that can handle order processing and the creat
 
 1. Close the browser tab and minimize the browser window once your sign in is complete.
 
-1. Within the Visual Studio Code window, drill down **(1)** the resource in your subscription. Right click on your Azure Function named **(2) parts-func-<inject key="DeploymentID" enableCopy="false"/>**      and select **Deploy to Azure Function App... (3)**.
+1. Within the Visual Studio Code window, drill down **(1)** the resource in your subscription. Right click on your Azure Function named **(2) parts-func-<inject key="DeploymentID" enableCopy="false"/>** 
+and select **Deploy to Azure Function App... (3)**.
 
     ![Azure subscription is shown. The function app **parts-func-{uniquesuffix} (2)** is selected. On the context menu Deploy to Function App is highlighted.](media/vscode-deploy-function-app.png "Deploy to Function App")
 
@@ -47,7 +48,9 @@ You suggest a serverless approach that can handle order processing and the creat
 
 ## Task 2: Connecting Function App and App Service
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your `parts` Storage Account resource by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-<inject key="DeploymentID" enableCopy="false"/>**     resource group, and selecting the **parts<inject key="DeploymentID" enableCopy="false"/>**      Storage Account from the list of resources.
+1. In the [Azure portal](https://portal.azure.com), navigate to your `parts` Storage Account resource by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-<inject key="DeploymentID" enableCopy="false"/>**
+resource group, and selecting the **parts<inject key="DeploymentID" enableCopy="false"/>**
+Storage Account from the list of resources.
 
     ![The parts{uniquesuffix} Storage Account is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/select-storage-account.png "Storage Resource Selection")
 
@@ -55,7 +58,8 @@ You suggest a serverless approach that can handle order processing and the creat
 
     ![Access keys blade is open. Show keys button is highlighted. The copy button for the first connection string is pointed.](media/storage-account-connection-copy.png "Storage Access Keys")
 
-1. Go back to the resource list and navigate to your **(2) partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>**     App Service resource. You can search for **(1)** `partsunlimited-web` to find your Web App and App Service Plan
+1. Go back to the resource list and navigate to your **(2) partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>**
+App Service resource. You can search for **(1)** `partsunlimited-web` to find your Web App and App Service Plan
 
    ![The search box for the resource is filled in with partsunlimited-web. The partsunlimited-web-20 Azure App Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-appservice-resource.png "Resources")
 
@@ -78,7 +82,8 @@ You suggest a serverless approach that can handle order processing and the creat
 
     ![App Service Configuration page is open. Save button is highlighted.](media/app-service-settings-save.png "App Service Configuration")
 
-1. Go back to the resource list and navigate to your **(2) parts-func-<inject key="DeploymentID" enableCopy="false"/>**     Function App resource. You can search for **(1)** `func`  to find your function app.
+1. Go back to the resource list and navigate to your **(2) parts-func-<inject key="DeploymentID" enableCopy="false"/>**     
+    Function App resource. You can search for **(1)** `func`  to find your function app.
 
    ![The search box for the resource is filled in with func. The parts-func-{uniquesuffix} Function App is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/select-function-app.png "Function App Resource Selection")
 
@@ -103,7 +108,8 @@ You suggest a serverless approach that can handle order processing and the creat
 
 In this task, we will submit a new order on the Parts Unlimited website and observe the order's processing on the order details page. Once the order is submitted, the web front-end will put a job into an Azure Storage Queue. The Function App that we previously deployed is set to listen to the queue and pull jobs for processing. Once order processing is done, a PDF file will be created, and the link for the PDF file will be accessible on the order details page.
 
-1. Go back to the resource list and navigate to your **(2) partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>**     App Service resource. You can search for `partsunlimited-web` **(1)** to find your Web App and App Service Plan.
+1. Go back to the resource list and navigate to your **(2) partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>**
+App Service resource. You can search for **(1)** `partsunlimited-web` to find your Web App and App Service Plan.
 
    ![The search box for the resource is filled in with partsunlimited-web. The partsunlimited-web-20 Azure App Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-appservice-resource.png "Resources")
 
@@ -158,7 +164,9 @@ In this task, we will submit a new order on the Parts Unlimited website and obse
 
 In this task, you add Application Insights to your Function App in the Azure Portal, to be able to collect insights related to Function executions.
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your **Function App** by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-<inject key="DeploymentID" enableCopy="false"/>**     resource group, and selecting the **parts-func-<inject key="DeploymentID" enableCopy="false"/>**     App service from the list of resources.
+1. In the [Azure portal](https://portal.azure.com), navigate to your **Function App** by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-<inject key="DeploymentID" enableCopy="false"/>**
+resource group, and selecting the **parts-func-<inject key="DeploymentID" enableCopy="false"/>**
+App service from the list of resources.
 
    ![The Function App resource is highlighted in the list of resources.](media/azure-resources-function-app.png "Function App")
 
