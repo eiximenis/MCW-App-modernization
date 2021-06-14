@@ -40,8 +40,6 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
 1. Type **partsunlimitedweb<inject key="DeploymentID" enableCopy="true"/>** as your project name. Select **Create** to continue. 
 
-       Where DID is your deployment Id, which can be found in the environment details page.
-
     ![Azure Migrate project settings page is shown. Project name is set to partsunlimitedweb. Create button is highlighted.](media/azure-migrate-create-project-settings.png "Azure Migrate Project Creation")
 
 1. Once your project is created **Azure Migrate** will show you default **Web App Assessment (1)** and **Web App Migration (2)** tools (You might need to refresh your browser). For Parts Unlimited web site, **App Service Migration Assistant** is the one we have to use. Download links are presented in Azure Migrate's Web Apps page. In our case, our lab environment comes with App Service Migration Assistant pre-installed on Parts Unlimited's web server.
