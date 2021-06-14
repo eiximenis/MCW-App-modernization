@@ -95,7 +95,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
 ## Task 2: Creating a staging deployment slot
 
-1. Go back to your lab resource group, navigate to your **partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>** **(2)** App Service resource. You can search for `partsunlimited-web` **(1)** to find your Web App and App Service Plan
+1. Go back to your lab resource group, navigate to your **(2)  partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>**  App Service resource. You can search for `partsunlimited-web` **(1)** to find your Web App and App Service Plan
 
    ![The search box for resources is filled in with partsunlimited-web. The partsunlimited-web-20 Azure App Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-appservice-resource.png "Resources")
 
@@ -219,7 +219,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
     ![Actions on the GitHub Repository is selected. The latest successful run of the workflow is highlighted.](media/github-actions-success.png "GitHub Actions success")
 
-1. Go back to your lab resource group on the Azure Portal, navigate to your **staging (partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>/staging)** **(2)** App Service resource. You can search for `staging` **(1)** to find your App Service (Slot) for staging.
+1. Go back to your lab resource group on the Azure Portal, navigate to your **(2)  staging (partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>/staging)** App Service resource. You can search for `staging` **(1)** to find your App Service (Slot) for staging.
 
     ![The search box for resources is filled in with staging. The staging (partsunlimited-web-{uniquesuffix}/staging) Azure App Service Deployment Slot is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/select-staging-app-service.png "Staging Resource")
 
@@ -275,7 +275,7 @@ Now that Parts Unlimited has a separate staging environment for their e-commerce
 
 Once Parts Unlimited is happy with the changes tested in their staging environment, they can swap the two environments and have changes go to production. Environment Swap happens very fast and can help Parts Unlimited pull back changes by switching back if needed.
 
-1. Go back to your lab resource group, navigate to your **partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>** **(2)** App Service resource. You can search for `partsunlimited-web` **(1)** to find your app service.
+1. Go back to your lab resource group, navigate to your **(2)  partsunlimited-web-<inject key="DeploymentID" enableCopy="false"/>** App Service resource. You can search for `partsunlimited-web` **(1)** to find your app service.
 
    ![The search box for resources is filled in with partsunlimited-web. The partsunlimited-web-20 Azure App Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-appservice-resource.png "Resources")
 
