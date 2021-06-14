@@ -135,7 +135,7 @@ After you have reviewed the assessment results and you have ensured the database
 
 1. On the **Select target** tab, enter the following:
 
-   - **Server name (1)**: Enter the server name of your Azure SQL Database **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net** 
+   - **Server name (1)**: Enter the server name of your Azure SQL Database - **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net** 
    - **Authentication type (2)**: Select SQL Server Authentication.
    - **Username (3)**: Enter **demouser**
    - **Password (4)**: Enter **Password.1!!**
@@ -167,7 +167,7 @@ After you have reviewed the assessment results and you have ensured the database
 
 1. Connect to your Azure SQL Database, by selecting **Connect->Database Engine** in the Object Explorer, and then entering the following into the Connect to server dialog:
 
-    - **Server name (1)**: Enter the server name of your Azure SQL Database **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net** 
+    - **Server name (1)**: Enter the server name of your Azure SQL Database - **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net** 
     - **Authentication type (2)**: Select SQL Server Authentication.
     - **Username (3)**: Enter **demouser**
     - **Password (4)**: Enter **Password.1!!**
@@ -187,7 +187,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 > The [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) integrates some of the functionality of Microsoft existing tools and services to provide customers with a comprehensive, highly available database migration solution. The service uses the Data Migration Assistant to generate assessment reports that provide recommendations to guide you through the changes required prior to performing a migration. When you're ready to begin the migration process, Azure Database Migration Service performs all of the required steps.
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Database Migration Service by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **parts-dms-<inject key="DeploymentID" enableCopy="false"/>** Azure Database Migration Service in the list of resources.
+1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Database Migration Service by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-<inject key="DeploymentID" enableCopy="false"/>** resource group, and then selecting the **parts-dms-<inject key="DeploymentID" enableCopy="false"/>** Azure Database Migration Service in the list of resources.
 
    ![The contoso-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-dms-resource.png "Resources")
 
@@ -208,7 +208,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 1. On the Migration Wizard **Select source** blade, enter the following:
 
-   - **Source SQL Server instance name (1)**: Enter the SQL DNS name **<inject key="SQLVM DNS Name" enableCopy="true"/>** 
+   - **Source SQL Server instance name (1)**: Enter the SQL DNS name - **<inject key="SQLVM DNS Name" enableCopy="true"/>** 
    - **Authentication type (2)**: Select SQL Authentication.
    - **Username (3)**: Enter **PUWebSite**
    - **Password (4)**: Enter **Password.1!!**
@@ -224,7 +224,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 1. On the Migration Wizard **Select target** blade, enter the following:
 
-   - **Target server name (1)**: Enter the `fullyQualifiedDomainName` **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net**
+   - **Target server name (1)**: Enter the server name of your Azure SQL Database - **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net**
    - **Authentication type (2)**: Select SQL Authentication.
    - **Username (3)**: Enter **demouser**
    - **Password (4)**: Enter **Password.1!!**
@@ -284,7 +284,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 Now that we have both our application and database migrated to Azure. It is time to configure our application to use the SQL Azure Database.
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your `parts` SQL Database resource by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the `parts` SQL Database from the list of resources.
+1. In the [Azure portal](https://portal.azure.com), navigate to your `parts` SQL Database resource by selecting **Resource groups** from Azure services list, selecting the **hands-on-lab-<inject key="DeploymentID" enableCopy="false"/>** resource group, and selecting the `parts` SQL Database from the list of resources.
 
    ![The parts SQL database resource is highlighted in the list of resources.](media/resources-azure-sql-database.png "SQL database")
 
