@@ -135,7 +135,7 @@ After you have reviewed the assessment results and you have ensured the database
 
 1. On the **Select target** tab, enter the following:
 
-   - **Server name (1)**: Paste the server name of your Azure SQL Database you copied into a text editor in the previous task.
+   - **Server name (1)**: **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net** TEST Paste the server name of your Azure SQL Database you copied into a text editor in the previous task.
    - **Authentication type (2)**: Select SQL Server Authentication.
    - **Username (3)**: Enter **demouser**
    - **Password (4)**: Enter **Password.1!!**
@@ -167,7 +167,7 @@ After you have reviewed the assessment results and you have ensured the database
 
 1. Connect to your Azure SQL Database, by selecting **Connect->Database Engine** in the Object Explorer, and then entering the following into the Connect to server dialog:
 
-    - **Server name (1)**: Paste the server name of your Azure SQL Database you copied above.
+    - **Server name (1)**: **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net** TEST Paste the server name of your Azure SQL Database you copied above.
     - **Authentication type (2)**: Select SQL Server Authentication.
     - **Username (3)**: Enter **demouser**
     - **Password (4)**: Enter **Password.1!!**
@@ -208,7 +208,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 1. On the Migration Wizard **Select source** blade, enter the following:
 
-   - **Source SQL Server instance name (1)**: <inject key="SQLVM DNS Name" enableCopy="false"/> TEST Enter the DNS address of your Sql Server. This can be retrieved from environment details section of your guide. For example, `sqlserver2008-{suffixid}.eastus2.cloudapp.azure.com`.
+   - **Source SQL Server instance name (1)**: **<inject key="SQLVM DNS Name" enableCopy="true"/>** 
    - **Authentication type (2)**: Select SQL Authentication.
    - **Username (3)**: Enter **PUWebSite**
    - **Password (4)**: Enter **Password.1!!**
@@ -224,7 +224,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 1. On the Migration Wizard **Select target** blade, enter the following:
 
-   - **Target server name (1)**: Enter the `fullyQualifiedDomainName` value of your Azure SQL Database (e.g., parts-xwn4o7fy6bcbg.database.windows.net), which you copied in the previous task.
+   - **Target server name (1)**: Enter the `fullyQualifiedDomainName` **<inject key="sqlDatabaseName" enableCopy="false"/>.database.windows.net** TEST value of your Azure SQL Database (e.g., parts-xwn4o7fy6bcbg.database.windows.net), which you copied in the previous task.
    - **Authentication type (2)**: Select SQL Authentication.
    - **Username (3)**: Enter **demouser**
    - **Password (4)**: Enter **Password.1!!**
@@ -246,7 +246,7 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 1. On the Migration Wizard **Summary** blade, enter the following:
 
-    - **Activity name**: Enter PartsUnlimitedDataMigration.
+    - **Activity name**: Enter ```PartsUnlimitedDataMigration```.
 
     ![The Migration Wizard summary blade is displayed, with PartsUnlimitedDataMigration entered into the name field.](media/dms-migration-wizard-migration-summary.png "Migration Wizard Summary")
 
