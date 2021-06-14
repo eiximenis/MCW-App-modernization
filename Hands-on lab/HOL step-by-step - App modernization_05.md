@@ -38,7 +38,7 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
     ![Azure Migrate is open. Web Apps section is selected. Create project button is highlighted.](media/azure-migrate-create-project-2.png "Azure Migrate Create project")
 
-1. Type **partsunlimitedwebDID** as your project name. Select **Create** to continue. 
+1. Type **partsunlimitedweb<inject key="DeploymentID" enableCopy="true"/>** as your project name. Select **Create** to continue. 
 
        Where DID is your deployment Id, which can be found in the environment details page.
 
