@@ -131,7 +131,7 @@ After you have reviewed the assessment results and you have ensured the database
 
    ![The Select source tab of the Data Migration Assistant is displayed, with the values specified above entered into the appropriate fields.](media/data-migration-assistant-migration-select-source.png "Data Migration Assistant Select source")
 
-1. Select **Next (7)**.
+1. Select **Next (8)**.
 
 1. On the **Select target** tab, enter the following:
 
