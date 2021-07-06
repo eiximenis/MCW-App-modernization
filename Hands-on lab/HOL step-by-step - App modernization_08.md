@@ -169,7 +169,7 @@ App Service resource. You can search for `partsunlimited-web` **(1)** to find yo
 
 1. We have to change the **dotnet-version (1)** number to `2.2.207`. Additionally, we have to add the solution file name **(2)** **PartsUnlimited.sln**  and the project file name **(3)** **src/PartsUnlimitedWebsite/PartsUnlimitedWebsite.csproj**  to dotnet build and publish commands. The reason behind this change is the fact that Parts Unlimited has multiple solutions and projects in their codebase. Name the commit as **CI/CD Definition Update**.
 
-    ![main_partsunlimited-web-20(staging).yml is open in edit mode. dotnet-version is set to 2.2.207. dotnet build command is changed to include PartsUnlimited.sln as a parameter. dotnet publish command is changed to include src/PartsUnlimitedWebsite/PartsUnlimitedWebsite.csproj as a parameter.](media/github-yaml-commit.png "GitHub YAML Editing")
+    ![main_partsunlimited-web-20(staging).yml is open in edit mode. dotnet-version is set to 2.2.207. dotnet build command is changed to include PartsUnlimited.sln as a parameter. dotnet publish command is changed to include src/PartsUnlimitedWebsite/PartsUnlimitedWebsite.csproj as a parameter.](media/github-1.png "GitHub YAML Editing")
 
     Below is the final YAML file for illustration.
     >Note: Do not copy the below code to the file. The secret file reference will not work.
@@ -214,7 +214,9 @@ App Service resource. You can search for `partsunlimited-web` **(1)** to find yo
             package: ${{env.DOTNET_ROOT}}/myapp
     ```
 
-1. Once all changes are complete select **Start commit (4)**. Type a commit message **(5)**. Select **Commit changes (6)** to submit your changes to the repository.
+1. Once all changes are complete select **Start commit (1)**. Type a commit message **(2)**. Select **Commit changes (3)** to submit your changes to the repository.
+
+    ![main_partsunlimited-web-20(staging).yml is open in edit mode. dotnet-version is set to 2.2.207. dotnet build command is changed to include PartsUnlimited.sln as a parameter. dotnet publish command is changed to include src/PartsUnlimitedWebsite/PartsUnlimitedWebsite.csproj as a parameter.](media/github-2.png "GitHub YAML Editing")
 
 1. Select **Actions (1)** to switch to the workflows page. Notice the latest successful run **(2)** of our workflow.
 
