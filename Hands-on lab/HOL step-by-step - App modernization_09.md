@@ -69,14 +69,13 @@ App Service resource. You can search for **(1)** `partsunlimited-web` to find yo
 
 1. On the **Add/Edit connection string** panel, enter the following:
 
-   - **Name(1)**: Enter `StorageConnectionString`.
+   - **Name(1)**: Enter `StorageConnectionString`
    - **Value**: Enter Storage Connection String you copied in Step 2.
    - **Type (3)**: Select **Custom**
    - **Deployment slot setting (4)**: Check this option to make sure connection strings stick to a deployment slot. This will make sure you can have different settings for staging and production.
+   - Select **OK (5)**.
 
     ![Add/Edit Connection string panel is open. The name field is set to StorageConnectionString. The value field is set to the connection string copied in a previous step. Type is set to Custom. The deployment slot setting checkbox is checked. OK button is highlighted. ](media/app-service-storage-connection.png "Deployment Slot Configuration")
-
-1. Select **OK (5)**.
 
 1. Select **Save** and **Continue** for the following confirmation dialog.
 
@@ -93,12 +92,11 @@ App Service resource. You can search for **(1)** `partsunlimited-web` to find yo
 
 1. On the **Add/Edit connection string** panel, enter the following:
 
-    - **Name(1)**: Enter `DefaultConnection`.
+    - **Name(1)**: Enter `DefaultConnection`
     - **Value**: Enter SQL Connection String you copied in Exercise 3, Task 5, Step 3.
+    - Select **OK (3)**.
 
     ![Add/Edit Connection string panel is open. The name field is set to StorageConnectionString. The value field is set to the connection string copied in a previous step. Type is set to Custom. The deployment slot setting checkbox is checked. OK button is highlighted.](media/function-app-sql-setting.png "Function App Configuration")
-
-1. Select **OK (3)**.
 
 1. Select **Save** and **Continue** for the following confirmation dialog.
 
