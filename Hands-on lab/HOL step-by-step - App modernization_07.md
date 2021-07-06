@@ -23,14 +23,14 @@ Parts Unlimited would like an assessment to see what potential issues they might
 1. In the New project pane, set the name of the project **(1)** and make sure the following value are selected:
 
    - **Project type**: Select Assessment.
-   - **Project name (1)**: Enter **Assessment**.
+   - **Project name (1)**: Enter **Assessment**
    - **Assessment type**: Select Database Engine.
    - **Source server type**: Select SQL Server.
    - **Target server type**: Select Azure SQL Database.
+   - Select **Create (2)**.
+
 
    ![New project settings for doing an assessment of a migration from SQL Server to Azure SQL Database.](media/dma-new-project-to-azure-sql-db.png "New project settings")
-
-1. Select **Create (2)**.
 
 1. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are both checked, and then select **Next (2)**.
 
@@ -38,16 +38,15 @@ Parts Unlimited would like an assessment to see what potential issues they might
 
 1. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
-    - **Server name (1)**: Enter **SQLSERVER2008**.
+    - **Server name (1)**: Enter **SQLSERVER2008**
     - **Authentication type (2)**: Select **SQL Server Authentication**.
     - **Username (3)**: Enter **PUWebSite**
     - **Password (4)**: Enter `Password.1!!`
     - **Encrypt connection**: Check this box if not checked.
     - **Trust server certificate (5)**: Check this box.
+    - Select **Connect (6)**.
 
     ![In the Connect to a server dialog, the values specified above are entered into the appropriate fields.](media/dma-connect-to-a-server.png "Connect to a server")
-
-1. Select **Connect (6)**.
 
 1. On the **Add sources** dialog that appears next, check the box for `PartsUnlimited` **(1)** and select **Add (2)**.
 
@@ -75,11 +74,14 @@ Parts Unlimited would like an assessment to see what potential issues they might
 
     ![Azure is selected as the Azure Environment on the connect to Azure screen. Connect button is highlighted.](media/dma-azure-migrate-upload.png "Azure Environment Selection")
 
-1. Select your subscription **(2)** and the `partsunlimited` Azure Migrate project **(3)**. Select **Upload (4)** to start the upload to Azure.
+1. Select your subscription **(1)** and the `partsunlimited` Azure Migrate project **(2)**. Select **Upload (3)** to start the upload to Azure.
 
-    ![Upload to Azure Migrate page is open. Lab subscription and partsunlimited Azure Migrate Project are selected. Upload button is highlighted.](media/dma-azure-migrate-upload-2.png "Azure Migrate upload settings")
+    ![Upload to Azure Migrate page is open. Lab subscription and partsunlimited Azure Migrate Project are selected. Upload button is highlighted.](media/dma.png "Azure Migrate upload settings")
 
     > **Note**: If you encounter **Failed to fetch subscription list from Azure, Strong Authentication required (1)** you might not see some of your subscription because of MFA limitations. You should still be able to see your lab subscription.
+
+     ![Upload to Azure Migrate page is open. Lab subscription and partsunlimited Azure Migrate Project are selected. Upload button is highlighted.](media/dma-azure-migrate-upload-2.png "Azure Migrate upload settings")
+
 
 1. Once the upload is complete select **OK** and navigate to the Azure Migrate page on the Azure Portal.
 
@@ -110,14 +112,13 @@ After you have reviewed the assessment results and you have ensured the database
 1. In the New project dialog, enter the following:
 
    - **Project type (1)**: Select Migration.
-   - **Project name (2)**: Enter Migration.
+   - **Project name (2)**: Enter **Migration**
    - **Source server type**: Select SQL Server.
    - **Target server type**: Select Azure SQL Database.
    - **Migration scope (3)**: Select Schema only.
+   - Select **Create (4)**.
 
    ![The above information is entered in the New project dialog box.](media/data-migration-assistant-new-project-migration.png "New Project dialog")
-
-1. Select **Create (4)**.
 
 1. On the **Select source** tab, enter the following:
 
@@ -128,10 +129,9 @@ After you have reviewed the assessment results and you have ensured the database
    - **Encrypt connection**: Check this box.
    - **Trust server certificate (5)**: Check this box.
    - Select **Connect (6)**, and then ensure the `PartsUnlimited` database is selected **(7)** from the list of databases.
+   - Select **Next (8)**.
 
    ![The Select source tab of the Data Migration Assistant is displayed, with the values specified above entered into the appropriate fields.](media/data-migration-assistant-migration-select-source.png "Data Migration Assistant Select source")
-
-1. Select **Next (8)**.
 
 1. On the **Select target** tab, enter the following:
 
@@ -142,20 +142,17 @@ After you have reviewed the assessment results and you have ensured the database
    - **Encrypt connection**: Check this box.
    - **Trust server certificate (5)**: Check this box.
    - Select **Connect (6)**, and then ensure the `parts` database is selected **(7)** from the list of databases.
+   - Select **Next (8)**.
 
    ![The Select target tab of the Data Migration Assistant is displayed, with the values specified above entered into the appropriate fields.](media/data-migration-assistant-migration-select-target.png "Data Migration Assistant Select target")
-
-1. Select **Next (8)**.
 
 1. On the **Select objects** tab, leave all the objects checked **(1)**, and select **Generate SQL script (2)**.
 
     ![The Select objects tab of the Data Migration Assistant is displayed, with all the objects checked.](media/data-migration-assistant-migration-select-objects.png "Data Migration Assistant Select target")
 
-1. On the **Script & deploy schema** tab, review the script. Notice the view also provides a note that there are not blocking issues **(1)**.
+1. On the **Script & deploy schema** tab, review the script. Notice the view also provides a note that there are not blocking issues **(1)**. Now, select **Deploy schema (2)**.
 
     ![The Script & deploy schema tab of the Data Migration Assistant is displayed, with the generated script shown.](media/data-migration-assistant-migration-script-and-deploy-schema.png "Data Migration Assistant Script & deploy schema")
-
-1. Select **Deploy schema (2)**.
 
 1. After the schema is deployed, review the deployment results, and ensure there were no errors.
 
@@ -172,10 +169,9 @@ After you have reviewed the assessment results and you have ensured the database
     - **Username (3)**: Enter **demouser**
     - **Password (4)**: Enter **Password.1!!**
     - **Remember password (5)**: Check this box.
+    - Select **Connect (6)**.
 
     ![The SSMS Connect to Server dialog is displayed, with the Azure SQL Database name specified, SQL Server Authentication selected, and the demouser credentials entered.](media/ssms-connect-azure-sql-database.png "Connect to Server")
-
-1. Select **Connect (6)**.
 
 1. Once connected, expand **Databases**, and expand **parts**, then expand **Tables**, and observe the schema has been created **(1)**. Expand **Security > Users** to observe that the database user is migrated as well **(2)**.
 
@@ -197,14 +193,13 @@ At this point, you have migrated the database schema using DMA. In this task, yo
 
 1. On the New migration project blade, enter the following:
 
-   - **Project name (1)**: Enter DataMigration.
+   - **Project name (1)**: Enter **DataMigration**
    - **Source server type**: Select SQL Server.
    - **Target server type**: Select Azure SQL Database.
    - **Choose type of activity**: Select **Data migration**
+   - Select **Create and run activity (2)**.
 
    ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
-
-1. Select **Create and run activity (2)**.
 
 1. On the Migration Wizard **Select source** blade, enter the following:
 
@@ -213,10 +208,9 @@ At this point, you have migrated the database schema using DMA. In this task, yo
    - **Username (3)**: Enter **PUWebSite**
    - **Password (4)**: Enter **Password.1!!**
    - **Connection properties (5)**: Check both Encrypt connection and Trust server certificate.
+   - Select **Next: Select databases >> (6)**.
 
-   ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
-
-1. Select **Next: Select databases >> (6)**.
+   ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](media/dms.png "Migration Wizard Select source")
 
 1. PartsUnlimited databases comes preselected. Select **Next: Select target >>** to continue.
 
@@ -229,28 +223,25 @@ At this point, you have migrated the database schema using DMA. In this task, yo
    - **Username (3)**: Enter **demouser**
    - **Password (4)**: Enter **Password.1!!**
    - **Connection properties**: Check Encrypt connection.
+   - Select **Next: Map to target databases >> (5)**.
 
    ![The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
-
-1. Select **Next: Map to target databases >> (5)**.
 
 1. On the Migration Wizard **Map to target databases** blade, confirm that **PartsUnlimited (1)** is checked as the source database, and **parts (2)** is the target database on the same line, then select **Next: Configuration migration settings >> (3)**.
 
     ![The Migration Wizard Map to target database blade is displayed, with the ContosoInsurance line highlighted.](media/dms-migration-wizard-map-to-target-databases.png "Migration Wizard Map to target databases")
 
-1. On the Migration Wizard **Configure migration settings** blade, expand the **PartsUnlimited (1)** database and verify all the tables are selected **(2)**.
+1. On the Migration Wizard **Configure migration settings** blade, expand the **PartsUnlimited (1)** database, verify all the tables are selected **(2)** and select **Next: Summary >> (3)**..
 
     ![The Migration Wizard Configure migration settings blade is displayed, with the expand arrow for PartsUnlimited highlighted, and all the tables checked.](media/dms-migration-wizard-configure-migration-settings.png "Migration Wizard Configure migration settings")
 
-1. Select **Next: Summary >> (3)**.
-
 1. On the Migration Wizard **Summary** blade, enter the following:
 
-    - **Activity name**: Enter ``PartsUnlimitedDataMigration``.
+    - **Activity name (1)**: Enter ``PartsUnlimitedDataMigration``
+    - Select **Start migration (2)**.
 
     ![The Migration Wizard summary blade is displayed, with PartsUnlimitedDataMigration entered into the name field.](media/dms-migration-wizard-migration-summary.png "Migration Wizard Summary")
 
-1. Select **Start migration**.
 
 1. Monitor the migration on the status screen that appears. Select the refresh icon in the toolbar to retrieve the latest status.
 
@@ -306,14 +297,13 @@ Now that we have both our application and database migrated to Azure. It is time
 
 1. On the **Add/Edit connection string** panel, enter the following:
 
-   - **Name(1)**: Enter `DefaultConnectionString`.
+   - **Name(1)**: Enter `DefaultConnectionString`
    - **Value**: Enter SQL Connection String you copied in Step 3.
    - **Type (3)**: Select **SQLAzure**
    - **Deployment slot setting (4)**: Check this option to make sure connection strings stick to a deployment slot. This will be helpful when we add additional deployment slots during the next exercises.
+   - Select **OK (5)**.
 
     ![Add/Edit Connection string panel is open. Name field is set to DefaultConnectionString. Value field is set to the connection string copied in a previous step. Type is set to SQL Azure. Deployment slot setting checkbox is checked. OK button is highlighted. ](media/app-service-connection-string.png "Adding connection string")
-
-1. Select **OK (5)**.
 
 1. Select **Save** and **Continue** for the following confirmation dialog.
 
