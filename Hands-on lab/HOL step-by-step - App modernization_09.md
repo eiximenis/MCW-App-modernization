@@ -172,7 +172,7 @@ App service from the list of resources.
 
    ![Application Insights blade is selected. The Turn on Application Insights button is highlighted.](media/function-app-add-app-insights.png "Turn on Application Insights for Function App")
 
-1. On the Application Insights blade, Select the following Details.
+1. On the Application Insights blade, provide the below information.
 
    - Select **Create new resource(1)**, accept the default resource name and location provided. 
    - Select existing log analytics workspace **Parts-Workspace-<inject key="DeploymentID" enableCopy="false"/>(2)** workspace from the dropdown as shown in the below screenshot.
