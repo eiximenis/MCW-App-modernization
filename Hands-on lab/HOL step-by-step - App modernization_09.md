@@ -172,7 +172,7 @@ App service from the list of resources.
 
    ![Application Insights blade is selected. The Turn on Application Insights button is highlighted.](media/function-app-add-app-insights.png "Turn on Application Insights for Function App")
 
-1. On the Application Insights blade, select **Create new resource(1)**, accept the default name provided, and then select **Log-Analytics-<inject key="DeploymentID" enableCopy="false"/>(2)** workspace from the dropdown. Click on **Apply(3)**, Select **Yes** when prompted about restarting the Function App to apply monitoring settings.
+1. On the Application Insights blade, select **Create new resource(1)**, accept the default resource name and location provided, and then select **Log-Analytics-<inject key="DeploymentID" enableCopy="false"/>(2)** workspace from the dropdown. Click on **Apply(3)**, Select **Yes** when prompted about restarting the Function App to apply monitoring settings.
 
    ![The Create New Application Insights blade is displayed with a unique name set under Create new resource. Apply and the following Yes approval buttons are highlighted.](media/.Netapp1.png "Add Application Insights")
 
