@@ -184,4 +184,4 @@ App service from the list of resources.
 
    ![Live Metrics Stream is highlighted in the left-hand menu on the Application Insights blade.](media/app-insights-live-metrics-stream.png "Application Insights")
 
-   > While having Live Metric up, try submitting a new order on the Parts Unlimited web site. You will see access to blob storage in the telemetry to upload the PDF **(2)** and execution count on the graph **(3)**.
+   > It might take few minutes for the Live matrics to get loaded. While having Live Metric up, try submitting a new order on the Parts Unlimited web site. You will see access to blob storage in the telemetry to upload the PDF **(2)** and execution count on the graph **(3)**.
