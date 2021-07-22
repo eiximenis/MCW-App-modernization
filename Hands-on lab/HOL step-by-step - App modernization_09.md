@@ -172,9 +172,13 @@ App service from the list of resources.
 
    ![Application Insights blade is selected. The Turn on Application Insights button is highlighted.](media/function-app-add-app-insights.png "Turn on Application Insights for Function App")
 
-1. On the Application Insights blade, select **Create new resource (1)**, accept the default name provided, and then select **Apply (2)**. Select **Yes (3)** when prompted about restarting the Function App to apply monitoring settings.
+1. On the Application Insights blade, provide the below information.
 
-   ![The Create New Application Insights blade is displayed with a unique name set under Create new resource. Apply and the following Yes approval buttons are highlighted.](media/function-app-app-insights.png "Add Application Insights")
+   - Select **Create new resource(1)**, accept the default resource name and location provided. 
+   - Select existing log analytics workspace **Parts-Workspace-<inject key="DeploymentID" enableCopy="false"/>(2)** workspace from the dropdown as shown in the below screenshot.
+   - Click on **Apply(3)**, Select **Yes** when prompted about restarting the Function App to apply monitoring settings.
+
+   ![The Create New Application Insights blade is displayed with a unique name set under Create new resource. Apply and the following Yes approval buttons are highlighted.](media/.Netapp1.png "Add Application Insights")
 
 1. After the Function App restarts, select **View Application Insights data**.
 
@@ -184,4 +188,6 @@ App service from the list of resources.
 
    ![Live Metrics Stream is highlighted in the left-hand menu on the Application Insights blade.](media/app-insights-live-metrics-stream.png "Application Insights")
 
+   > It might take few minutes for the Live matrics to get loaded, Refresh the Page to view the Live matrics.
+    
    > While having Live Metric up, try submitting a new order on the Parts Unlimited web site. You will see access to blob storage in the telemetry to upload the PDF **(2)** and execution count on the graph **(3)**.
