@@ -77,7 +77,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
 1. GitHub authentication screen will pop up. Select **Sign in with your browser (2)**. A new browser pop-up will appear with the GitHub login page.
 
-    - NOTE!! Sometimes an authentication screen might not pop up, instead it might ask you to enter your credentials on Powershell itself.   
+    > NOTE!! Sometimes an authentication screen might not pop up, instead it might ask you to enter your credentials on Powershell itself.   
 
     ![PowerShell terminal shows git push command and the GitHub Sign In experoence. Sign in with your browser button is highlighted.](media/github-sign-in.png "GitHub Sign In")
 
@@ -132,7 +132,7 @@ App Service resource. You can search for `partsunlimited-web` **(1)** to find yo
 
 1. Once GitHub authorization is complete go back to the browser with the Azure Portal. Select the GitHub **Organization (1)** where you created the GitHub repository. This might be your personal account name if that is where you created the repository. Select the repository **partsunlimited (2)** and the branch **main (3)** as the source for the CI/CD pipeline. Select **Save (4)** to create CI/CD pipeline.
 
-    - Note: Please refresh the page if you do not see your Github account linked even after authorizing the App service.
+    > Note: Please refresh the page if you do not see your Github account linked even after authorizing the App service.
     
     ![Authorize AzureAppService button is highlighted.](media/app-service-cicd-settings-save.png "Deployment Center Settings")
 
