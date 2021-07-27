@@ -4,6 +4,29 @@ Duration: 55 minutes
 
 The next step of Part Unlimited's migration project is the assessment and migration of its database. Currently, the database lives on a SQL Server 2008 R2 on a virtual machine. You will use an **Azure Migrate: Database Assessment** tool called **Microsoft Data Migration Assistant (DMA)** to assess the `PartsUnlimited` database for a migration to Azure SQL Database. The assessment generates a report detailing any feature parity and compatibility issues between the on-premises database and Azure SQL Database. After the assessment, you will use an **Azure Migrate: Database Migration** service called **Azure Database Migration Service (DMS)**. During the exercise, you will use a simulated on-premises environment hosted in virtual machines running on Azure.
 
+## Connect to your SqlServer2008 VM with RDP
+
+1. From the **Environment details** tab, Copy the **SQLVM DNS Name**.
+
+   ![](media/SQLVM-dns-name.png)
+
+1. From your lab environment(**WebVM**), In the search bar, **Search** for **RDP** and **select** the **Remote Connection Desktop** app.
+   
+   ![](media/copypasteissue-3.png)
+
+1. Paste the **SQLVM DNS Name** in the **Computer** field and click on **Connect**.
+
+   ![](media/rdp-vm2.png)  
+ 
+1. Now, enter the SQLVM **username** and **password** which you have copied from **Environment details** page and click on **Ok** button. 
+   Please add **dot** and **back-slash** “.\” before the username.
+   
+   ![](media/vm1-more-choices.png) 
+
+1. Next, click on the **Yes** button to accept the certificate and add in trusted certificates.
+
+   ![](media/logib-vm2-2.png)
+
 ## Task 1: Perform assessment for migration to Azure SQL Database
 
 Parts Unlimited would like an assessment to see what potential issues they might need to address in moving their database to Azure SQL Database. In this task, you will use the [Microsoft Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) (DMA) to assess the `PartsUnlimited` database against Azure SQL Database (Azure SQL DB). Data Migration Assistant (DMA) enables you to upgrade to a modern data platform by detecting compatibility issues that can impact database functionality on your new version of SQL Server or Azure SQL Database. It recommends performance and reliability improvements for your target environment. The assessment generates a report detailing any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
@@ -176,6 +199,9 @@ After you have reviewed the assessment results and you have ensured the database
 1. Once connected, expand **Databases**, and expand **parts**, then expand **Tables**, and observe the schema has been created **(1)**. Expand **Security > Users** to observe that the database user is migrated as well **(2)**.
 
     ![In the SSMS Object Explorer, Databases, parts, and Tables are expanded, showing the tables created by the deploy schema script. Security, Users are expended to show database user PUWebSite is migrated as well.](media/ssms-databases-contosoinsurance-tables.png "SSMS Object Explorer")
+
+
+    > **NOTE:** You can now disconnect from the **SQLVM** and perform the remaining exercises from the **LabVM**.
 
 ## Task 4: Migrate the database using the Azure Database Migration Service
 
