@@ -201,7 +201,7 @@ After you have reviewed the assessment results and you have ensured the database
     ![In the SSMS Object Explorer, Databases, parts, and Tables are expanded, showing the tables created by the deploy schema script. Security, Users are expended to show database user PUWebSite is migrated as well.](media/ssms-databases-contosoinsurance-tables.png "SSMS Object Explorer")
 
 
-    > **NOTE:** You can now disconnect from the **SQLVM** and perform the remaining exercises from the **LabVM**.
+    > **Note**: You can now disconnect from the **SQLVM** and perform the remaining exercises from the **LabVM**.
 
 ## Task 4: Migrate the database using the Azure Database Migration Service
 
