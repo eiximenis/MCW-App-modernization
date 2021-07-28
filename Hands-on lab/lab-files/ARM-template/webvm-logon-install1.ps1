@@ -32,15 +32,21 @@ Start-Process -file 'C:\AppServiceMigrationAssistant.msi ' -arg '/qn /l*v C:\asm
 
 if((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 528049)
 {
+Write-Host ".Net 4.8 is already installed"
 break
 }
 else
 {
 Do{
+
+Write-Host "Installing .Net 4.8"
+
 choco install dotnetfx -y -force
 $data=(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 528049
 }
 Until ($data)
+
+Write-Host "Installed .Net 4.8 successfully"
 }
 
 # Download and install Data Mirgation Assistant
@@ -90,12 +96,13 @@ $HTTP_Status = [int]$HTTP_Response.StatusCode
 
 If ($HTTP_Status -eq 200) {
 
-    $Validstatus="Succeeded"  ##Failed or Successful at the last step
-    $Validmessage="Post Deployment is successful"
+    Write-Host "Website is working!!"
     break
 }
 Else {
 Do{
+
+    Write-Host "Re-installing IIS"
 
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
 $pathArgs = {C:\dotnet-hosting-2.2.2-win.exe /Install /Quiet /Norestart /Logs logCore22.txt}
@@ -111,13 +118,9 @@ $HTTP_Status = [int]$HTTP_Response.StatusCode
 
 }
 Until($HTTP_Status -eq 200)
+
+    Write-Host "Installed IIS successfully"
 }
-
-#Set the final deployment status
-#CloudlabsManualAgent setStatus
-
-#CloudLabsManualAgent Start
-
 
 Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
 
