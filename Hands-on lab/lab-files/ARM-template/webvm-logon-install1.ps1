@@ -33,7 +33,6 @@ Start-Process -file 'C:\AppServiceMigrationAssistant.msi ' -arg '/qn /l*v C:\asm
 if((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 528049)
 {
 Write-Host ".Net 4.8 is already installed"
-break
 }
 else
 {
@@ -97,7 +96,6 @@ $HTTP_Status = [int]$HTTP_Response.StatusCode
 If ($HTTP_Status -eq 200) {
 
     Write-Host "Website is working!!"
-    break
 }
 Else {
 Do{
