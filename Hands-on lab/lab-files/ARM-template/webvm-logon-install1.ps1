@@ -22,6 +22,11 @@ function Wait-Install {
     }
 }
 
+#dotnet
+
+choco install dotnetfx -y -force
+
+
 # Install App Service Migration Assistant
 Wait-Install
 Write-Host "Installing App Service Migration Assistant..."
