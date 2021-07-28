@@ -133,6 +133,7 @@ choco feature enable -n allowGlobalConfirmation
 
 # Run Imported functions from cloudlabs-windows-functions.ps1
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+choco install dotnetfx -y -force
 InstallSQLSMS
 InstallAzPowerShellModule
 
