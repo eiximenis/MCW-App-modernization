@@ -54,9 +54,24 @@ function Wait-Install {
     }
 }
 
+#Import Common Functions
+$path = pwd
+$path=$path.Path
+$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
+# Run Imported functions from cloudlabs-windows-functions.ps1
+WindowsServerCommon
+InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 
 
 # To resolve the error of https://github.com/microsoft/MCW-App-modernization/issues/68. The cause of the error is Powershell by default uses TLS 1.0 to connect to website, but website security requires TLS 1.2. You can change this behavior with running any of the below command to use all protocols. You can also specify single protocol.
+
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
+[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
+
+# Disable IE ESC
+Disable-InternetExplorerESC
 
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
@@ -89,6 +104,12 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab
 # Download .NET Core 3.1 SDK 
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/cc28204e-58d7-4f2e-9539-aad3e71945d9/d4da77c35a04346cc08b0cacbc6611d5/dotnet-sdk-3.1.406-win-x64.exe', 'C:\dotnet-sdk-3.1.406-win-x64.exe')
 
+# Schedule Installs for first Logon
+$argument = "-File `"C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\ARM-template\webvm-logon-install1.ps1`""
+$triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
+$action = New-ScheduledTaskAction -Execute "powershell" -Argument $argument 
+Register-ScheduledTask -TaskName "Install Lab Requirements" -Trigger $triggerAt -Action $action -User demouser
+
 # Download and install .NET Core 2.2
 Wait-Install
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
@@ -105,36 +126,15 @@ Wait-Install
 (New-Object System.Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?LinkID=623230', 'C:\vscode.exe')
 Start-Process -file 'C:\vscode.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:\vscode_install.txt" /NORESTART /FORCECLOSEAPPLICATIONS /mergetasks="!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"' -passthru | wait-process
 
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
-[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
-
-#Import Common Functions
-$path = pwd
-$path=$path.Path
-$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
-. $commonscriptpath
-
 #choco
 $env:chocolateyUseWindowsCompression = 'true'
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -Verbose
 choco feature enable -n allowGlobalConfirmation
 
 # Run Imported functions from cloudlabs-windows-functions.ps1
-Disable-InternetExplorerESC
-Enable-IEFileDownload
-Enable-CopyPageContent-In-InternetExplorer
-DisableServerMgrNetworkPopup
-CreateLabFilesDirectory
-DisableWindowsFirewall
-InstallEdgeChromium
-InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
 InstallSQLSMS
 InstallAzPowerShellModule
-CloudLabsManualAgent Install
-
-# Enable Embedded shadow
-Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
 
 #Azure Portal Shortcut
 $WshShell = New-Object -comObject WScript.Shell
@@ -143,19 +143,7 @@ $Shortcut.TargetPath = """C:\Program Files (x86)\Microsoft\Edge\Application\msed
 $argA = """https://portal.azure.com"""
 $Shortcut.Arguments = $argA
 $Shortcut.Save()
-    
-
-# Schedule Installs for first Logon
-$argument = "-File `"C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\ARM-template\webvm-logon-install1.ps1`""
-$triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
-$action = New-ScheduledTaskAction -Execute "powershell" -Argument $argument 
-Register-ScheduledTask -TaskName "Install Lab Requirements" -Trigger $triggerAt -Action $action -User demouser
-
-$Validstatus="Pending"  ##Failed or Successful at the last step
-$Validmessage="Post Deployment is Pending"
-
-#Set the final deployment status
-CloudlabsManualAgent setStatus
+   
 
 Stop-Transcript
     
