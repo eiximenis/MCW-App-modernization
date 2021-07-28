@@ -106,3 +106,5 @@ CloudLabsManualAgent Start
 
 
 Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
+
+Stop-Transcript
