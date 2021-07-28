@@ -44,7 +44,7 @@ $commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1
 WindowsServerCommon
 InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 CreateCredFile $AzureUserName $AzurePassword $DeploymentID $AzureTenantID $AzureSubscriptionID
-InstallDotNetFW4.8
+choco install dotnetfx -y -force
 InstallSQLSMS
 InstallAzPowerShellModule
 CloudLabsManualAgent Install
