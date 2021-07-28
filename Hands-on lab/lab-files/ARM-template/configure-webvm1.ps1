@@ -148,6 +148,15 @@ $Shortcut.Arguments = $argA
 $Shortcut.Save()
    
 
+#Autologin
+$Username = "demouser"
+$Pass = "Password.1!!"
+$RegistryPath = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String 
+Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
+Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
+
+
 Stop-Transcript
     
 Restart-Computer
