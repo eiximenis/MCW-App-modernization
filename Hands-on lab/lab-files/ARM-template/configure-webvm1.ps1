@@ -137,6 +137,9 @@ choco install dotnetfx -y -force
 InstallSQLSMS
 InstallAzPowerShellModule
 
+# Enable Embedded shadow
+Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
+
 #Azure Portal Shortcut
 $WshShell = New-Object -comObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut("C:\Users\Public\Desktop\Azure Portal.lnk")
