@@ -31,27 +31,6 @@ $trainerUserPassword="Password.!!1"
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
 
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
-[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
-
-#Import Common Functions
-$path = pwd
-$path=$path.Path
-$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
-. $commonscriptpath
-
-# Run Imported functions from cloudlabs-windows-functions.ps1
-WindowsServerCommon
-InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
-CreateCredFile $AzureUserName $AzurePassword $DeploymentID $AzureTenantID $AzureSubscriptionID
-choco install dotnetfx -y -force
-InstallSQLSMS
-InstallAzPowerShellModule
-CloudLabsManualAgent Install
-
-# Enable Embedded shadow
-Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
-
 
 function Wait-Install {
     $msiRunning = 1
@@ -126,6 +105,27 @@ Wait-Install
 (New-Object System.Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?LinkID=623230', 'C:\vscode.exe')
 Start-Process -file 'C:\vscode.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:\vscode_install.txt" /NORESTART /FORCECLOSEAPPLICATIONS /mergetasks="!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"' -passthru | wait-process
 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
+[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
+
+#Import Common Functions
+$path = pwd
+$path=$path.Path
+$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
+# Run Imported functions from cloudlabs-windows-functions.ps1
+WindowsServerCommon
+InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
+CreateCredFile $AzureUserName $AzurePassword $DeploymentID $AzureTenantID $AzureSubscriptionID
+choco install dotnetfx -y -force
+InstallSQLSMS
+InstallAzPowerShellModule
+CloudLabsManualAgent Install
+
+# Enable Embedded shadow
+Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
+
 #Azure Portal Shortcut
 $WshShell = New-Object -comObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut("C:\Users\Public\Desktop\Azure Portal.lnk")
@@ -146,5 +146,7 @@ $Validmessage="Post Deployment is Pending"
 
 #Set the final deployment status
 CloudlabsManualAgent setStatus
+
+Stop-Transcript
     
 Restart-Computer
