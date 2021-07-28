@@ -114,11 +114,21 @@ $path=$path.Path
 $commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
 . $commonscriptpath
 
+#choco
+$env:chocolateyUseWindowsCompression = 'true'
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -Verbose
+choco feature enable -n allowGlobalConfirmation
+
 # Run Imported functions from cloudlabs-windows-functions.ps1
-WindowsServerCommon
+Disable-InternetExplorerESC
+Enable-IEFileDownload
+Enable-CopyPageContent-In-InternetExplorer
+DisableServerMgrNetworkPopup
+CreateLabFilesDirectory
+DisableWindowsFirewall
+InstallEdgeChromium
 InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
-choco install dotnetfx -y -force
 InstallSQLSMS
 InstallAzPowerShellModule
 CloudLabsManualAgent Install
