@@ -47,6 +47,7 @@ CreateCredFile $AzureUserName $AzurePassword $DeploymentID $AzureTenantID $Azure
 InstallDotNetFW4.8
 InstallSQLSMS
 InstallAzPowerShellModule
+CloudLabsManualAgent Install
 
 # Enable Embedded shadow
 Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
