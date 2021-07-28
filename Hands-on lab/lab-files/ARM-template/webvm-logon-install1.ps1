@@ -97,28 +97,6 @@ If ($HTTP_Status -eq 200) {
 
     Write-Host "Website is working!!"
 }
-Else {
-Do{
-
-    Write-Host "Re-installing IIS"
-
-(New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
-$pathArgs = {C:\dotnet-hosting-2.2.2-win.exe /Install /Quiet /Norestart /Logs logCore22.txt}
-Invoke-Command -ScriptBlock $pathArgs
-
-iisreset /noforce 
-
-# We then get a response from the site.
-$HTTP_Response = $HTTP_Request.getResponse()
-
-# We then get the HTTP code as an integer.
-$HTTP_Status = [int]$HTTP_Response.StatusCode
-
-}
-Until($HTTP_Status -eq 200)
-
-    Write-Host "Installed IIS successfully"
-}
 
 Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
 
