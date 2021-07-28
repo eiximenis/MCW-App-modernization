@@ -105,9 +105,9 @@ Else {
 }
 
 #Set the final deployment status
-CloudlabsManualAgent setStatus
+#CloudlabsManualAgent setStatus
 
-CloudLabsManualAgent Start
+#CloudLabsManualAgent Start
 
 
 Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
