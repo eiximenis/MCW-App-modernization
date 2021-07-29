@@ -207,6 +207,11 @@ Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String
 Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
 Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
 
+$Validstatus="Pending"  ##Failed or Successful at the last step
+$Validmessage="Post Deployment is Pending"
+
+#Set the final deployment status
+CloudlabsManualAgent setStatus
 
 Stop-Transcript  
 
