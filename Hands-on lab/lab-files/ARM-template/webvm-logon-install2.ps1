@@ -99,8 +99,6 @@ If ($HTTP_Status -eq 200) {
 }
 Else {
 
-Do{
-
  Write-Host "Re-installing IIS"
 
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
@@ -109,6 +107,12 @@ Invoke-Command -ScriptBlock $pathArgs
 
 iisreset /noforce 
 
+Write-Host "Installed IIS successfully"
+
+}
+
+$url="http://"+$vmip
+
 $HTTP_Request = [System.Net.WebRequest]::Create($url)
 
 # We then get a response from the site.
@@ -116,13 +120,6 @@ $HTTP_Response = $HTTP_Request.getResponse()
 
 # We then get the HTTP code as an integer.
 $HTTP_Status = [int]$HTTP_Response.StatusCode
-}
-Until($HTTP_Status -eq 200)
-
-Write-Host "Installed IIS successfully"
-
-}
-
 
 If ($HTTP_Status -eq 200){
     $Validstatus="Succeeded"  ##Failed or Successful at the last step
