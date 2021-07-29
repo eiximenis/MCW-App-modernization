@@ -194,7 +194,10 @@ $argA = """https://portal.azure.com"""
 $Shortcut.Arguments = $argA
 $Shortcut.Save()
     
-    
+#CloudLabsManualAgent
+
+CloudLabsManualAgent Install
+
 #Autologin
 $Username = "demouser"
 $Pass = "Password.1!!"
