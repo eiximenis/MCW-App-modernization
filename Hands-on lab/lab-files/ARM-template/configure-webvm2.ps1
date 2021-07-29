@@ -62,6 +62,11 @@ $commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1
 . $commonscriptpath
 
 # Run Imported functions from cloudlabs-windows-functions.ps1
+
+#CloudLabsManualAgent
+
+CloudLabsManualAgent Install
+
 WindowsServerCommon
 InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 InstallAzPowerShellModule
@@ -194,10 +199,6 @@ $argA = """https://portal.azure.com"""
 $Shortcut.Arguments = $argA
 $Shortcut.Save()
     
-#CloudLabsManualAgent
-
-CloudLabsManualAgent Install
-
 #Autologin
 $Username = "demouser"
 $Pass = "Password.1!!"
