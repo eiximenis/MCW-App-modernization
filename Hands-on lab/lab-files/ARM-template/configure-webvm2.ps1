@@ -159,7 +159,7 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/cc28204e-58d7-4f2e-9539-aad3e71945d9/d4da77c35a04346cc08b0cacbc6611d5/dotnet-sdk-3.1.406-win-x64.exe', 'C:\dotnet-sdk-3.1.406-win-x64.exe')
 
 # Schedule Installs for first Logon
-$argument = "-File `"C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\ARM-template\webvm-logon-install1.ps1`""
+$argument = "-File `"C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\ARM-template\webvm-logon-install2.ps1`""
 $triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
 $action = New-ScheduledTaskAction -Execute "powershell" -Argument $argument 
 Register-ScheduledTask -TaskName "Install Lab Requirements" -Trigger $triggerAt -Action $action -User demouser
