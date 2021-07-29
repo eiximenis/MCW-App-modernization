@@ -63,65 +63,6 @@ Write-Host "Installing .NET Core 3.1 SDK..."
 $pathArgs = {C:\dotnet-sdk-3.1.406-win-x64.exe /Install /Quiet /Norestart /Logs logCore31SDK.txt}
 Invoke-Command -ScriptBlock $pathArgs
 
-Function InstallCloudLabsManualAgentFiles
-{
-#Download files to write deployment status
-Set-Content -Path 'C:\WindowsAzure\Logs\status-sample.txt' -Value '{"ServiceCode" : "ManualStepService", "Status" : "ReplaceStatus", "Message" : "ReplaceMessage"}'
-Set-Content -Path 'C:\WindowsAzure\Logs\validationstatus.txt' -Value '{"ServiceCode" : "ManualStepService", "Status" : "ReplaceStatus", "Message" : "ReplaceMessage"}'
-
-#Download cloudlabsagent zip
-Invoke-WebRequest 'https://experienceazure.blob.core.windows.net/software/cloudlabsagent/CloudLabsAgent.zip' -OutFile 'C:\Packages\CloudLabsAgent.zip'
-Expand-Archive -LiteralPath 'C:\Packages\CloudLabsAgent.zip' -DestinationPath 'C:\Packages\' -Force
-Set-ExecutionPolicy -ExecutionPolicy bypass -Force
-cmd.exe --% /c @echo off
-cmd.exe --% /c sc create "Spektra.CloudLabs.Agent" BinPath=C:\Packages\CloudLabsAgent\Spektra.CloudLabs.Agent.exe start= auto
-sleep 5
-cmd.exe --% /c sc start "Spektra.CloudLabs.Agent"
-sleep 5 
-}
-
-Function SetDeploymentStatus{
-   Param(
-     [parameter(Mandatory=$true)]
-      [String] $ManualStepStatus,
-       
-       [parameter(Mandatory=$true)]
-      [String] $ManualStepMessage    
-       )  
-  (Get-Content -Path "C:\WindowsAzure\Logs\status-sample.txt") | ForEach-Object {$_ -Replace "ReplaceStatus", "$ManualStepStatus"} | Set-Content -Path "C:\WindowsAzure\Logs\validationstatus.txt"
-   (Get-Content -Path "C:\WindowsAzure\Logs\validationstatus.txt") | ForEach-Object {$_ -Replace "ReplaceMessage", "$ManualStepMessage"} | Set-Content -Path "C:\WindowsAzure\Logs\validationstatus.txt"
-     }
-         
-Function CloudLabsManualAgent{
-<#
-      SYNOPSIS
-      This is a function for installing/starting the cloudlabsagent, and to send the deployment status    
-#>
-
-param(  
-  #Task : to install or start the agent/ set the deployment status
-      [parameter(Mandatory=$true)]
-      [String]$Task      
-   )
-    #To install cloudlabsagent service files
-    if($Task -eq 'Install')
-    {
-       InstallCloudLabsManualAgentFiles
-    }
-    #start the cloudlabs agent service
-    elseif($Task -eq 'Start')
-    {
-      cmd.exe --% /c sc start "Spektra.CloudLabs.Agent"
-      sleep 5 
-    } 
-   elseif($Task -eq 'setStatus')
-    {
-      SetDeploymentStatus -ManualStepStatus $Validstatus -ManualStepMessage $Validmessage
-    }       
-   }
-
-
-   CloudLabsManualAgent Install
 
 #Check if Webvm ip is accessible or not
 Import-Module Az
