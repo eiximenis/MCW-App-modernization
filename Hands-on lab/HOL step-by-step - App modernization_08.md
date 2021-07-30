@@ -126,6 +126,25 @@ App Service resource. You can search for `partsunlimited-web` **(1)** to find yo
 
     ![Deployment Settings page is open. Source is set to GitHub. Runtime stack is set to .NET Core. Version is set to .NET Core 2.1 (LTS). Authorize button for GitHub is highlighted. ](media/app-service-deployment-settings.png "Deployment Center Settings")
 
+   > **Note**: If you are not getting a drop down to select the desired .Net Version, you can follow the below instructions to select the desired verison of .Net Core.
+     
+    1. Select **Configuration** from the left-hand side menu then **General Settings**.
+
+       ![](https://github.com/CloudLabsAI-Azure/Know-Before-You-Go/blob/main/media/appmodissue-1.png?raw=true)
+
+    2. On the **General settings** blade, provide the below information under **Stack settings** sections
+
+        - Stack: Select **.Net** from the dropdown.
+        - .NET version: Select **.NET Core(3.1,2.1)** from the dropdown.
+
+        ![](https://github.com/CloudLabsAI-Azure/Know-Before-You-Go/blob/main/media/appmodissue-2.png?raw=true)
+
+    3. Click on **Save** then **Continue** to save the changes.
+
+        ![](https://github.com/CloudLabsAI-Azure/Know-Before-You-Go/blob/main/media/appmodissue-3.png?raw=true)
+
+    4. Switch to the **Deployment Center** tab, select **GitHub** as the source and select **Authorize** to create the connection between the App Service deployment slot and the GitHub repository.
+    
 1. Login with your GitHub credentials and provide authorization to App Service to access the repository by selecting **Authorize AzureAppService**.
 
     ![Authorize AzureAppService button is highlighted.](media/app-service-github-repo-access.png "Authorize Azure App Service")
