@@ -1,5 +1,8 @@
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension1.txt -Append
 
+$commonscriptpath = "replacepath\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
 function Wait-Install {
     $msiRunning = 1
     $msiMessage = ""
