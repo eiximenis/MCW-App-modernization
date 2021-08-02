@@ -15,7 +15,13 @@ param (
     $InstallCloudLabsShadow,
 
     [string]
-    $DeploymentID 
+    $DeploymentID,
+    
+     [string]
+  $AzureTenantID,
+  
+  [string]
+  $AzureSubscriptionID
 )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
@@ -184,6 +190,9 @@ Start-Process -file 'C:\vscode.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:
 $env:chocolateyUseWindowsCompression = 'true'
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -Verbose
 choco feature enable -n allowGlobalConfirmation
+
+CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+
 choco install dotnetfx -y -force
 choco install sql-server-management-studio -y -force
 $WshShell = New-Object -comObject WScript.Shell
