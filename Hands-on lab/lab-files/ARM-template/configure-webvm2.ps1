@@ -154,7 +154,9 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
 
 
+#Replace Path
 
+(Get-Content C:\LabFiles\logontask.ps1) -replace "replacepath","$Path" | Set-Content C:\LabFiles\logontask.ps1 -Verbos
 
 # Downloading Deferred Installs
 # Download App Service Migration Assistant 
