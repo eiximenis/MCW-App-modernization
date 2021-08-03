@@ -21,7 +21,13 @@ param (
   $AzureTenantID,
   
   [string]
-  $AzureSubscriptionID
+  $AzureSubscriptionID,
+  
+      [string]
+    $azuresubscriptionid,
+
+    [string]
+    $azuretenantid
 )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
@@ -209,6 +215,13 @@ $argA = """https://portal.azure.com"""
 $Shortcut.Arguments = $argA
 $Shortcut.Save()
     
+Replace sub and tenant id
+
+(Get-Content -Path "LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-SUBSCRIPTION-ID", "$azuresubscriptionid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
+(Get-Content -Path "LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-TENANT-ID", "$azuretenantid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
+
+
+
 #Autologin
 $Username = "demouser"
 $Pass = "Password.1!!"
