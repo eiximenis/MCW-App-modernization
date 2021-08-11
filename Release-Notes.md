@@ -7,4 +7,4 @@
 
 ## July 2021
 ### Lab Guide Updates (Updated on 24 July 2021)
-As per the recent update in Azure, Log Analytics workspace is required along with resource name and Location while enabling Application Insights for Function App. For that changes are merged for screenshot and Instruction accordingly. 
+As per the recent update in Azure, Log Analytics Workspace needs to be selected along with resource name and Location while enabling Application Insights for function App. For that changes are merged for screenshot and instruction accordingly. 
