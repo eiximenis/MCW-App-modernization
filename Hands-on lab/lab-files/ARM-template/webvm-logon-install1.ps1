@@ -1,5 +1,8 @@
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension1.txt -Append
 
+$commonscriptpath = "replacepath\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
 function Wait-Install {
     $msiRunning = 1
     $msiMessage = ""
@@ -40,8 +43,13 @@ Do{
 
 Write-Host "Installing .Net 4.8"
 
-choco install dotnetfx -y -force
-$data=(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 528049
+#download .net 4.8
+Start-BitsTransfer -Source 'https://go.microsoft.com/fwlink/?linkid=2088631'  -Destination "$Env:Temp\Net4.8.exe"; 
+
+#install .net 4.8
+start-process "$Env:Temp\Net4.8.exe" -args "/q /norestart" -wait
+
+$data=(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 461814
 }
 Until ($data)
 
@@ -63,6 +71,17 @@ Write-Host "Installing .NET Core 3.1 SDK..."
 $pathArgs = {C:\dotnet-sdk-3.1.406-win-x64.exe /Install /Quiet /Norestart /Logs logCore31SDK.txt}
 Invoke-Command -ScriptBlock $pathArgs
 
+
+
+ Write-Host "Re-installing IIS"
+
+(New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
+$pathArgs = {C:\dotnet-hosting-2.2.2-win.exe /Install /Quiet /Norestart /Logs logCore22.txt}
+Invoke-Command -ScriptBlock $pathArgs
+
+iisreset /noforce 
+
+Write-Host "Re-installed IIS"
 
 #Check if Webvm ip is accessible or not
 Import-Module Az
@@ -93,22 +112,20 @@ $HTTP_Response = $HTTP_Request.getResponse()
 # We then get the HTTP code as an integer.
 $HTTP_Status = [int]$HTTP_Response.StatusCode
 
-If ($HTTP_Status -eq 200) {
-
-    Write-Host "Website is working!!"
+If ($HTTP_Status -eq 200){
+    $Validstatus="Succeeded"  ##Failed or Successful at the last step
+    $Validmessage="Post Deployment is successful"
 }
-Else {
+else{
+    Write-Warning "Validation Failed - see log output"
+    $Validstatus="Failed"  ##Failed or Successful at the last step
+    $Validmessage="Post Deployment Failed"
 
- Write-Host "Re-installing IIS"
-
-(New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
-$pathArgs = {C:\dotnet-hosting-2.2.2-win.exe /Install /Quiet /Norestart /Logs logCore22.txt}
-Invoke-Command -ScriptBlock $pathArgs
-
-iisreset /noforce 
-
-Write-Host "Installed IIS successfully"
 }
+
+CloudlabsManualAgent setStatus
+
+CloudLabsManualAgent Start
 
 Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
 
