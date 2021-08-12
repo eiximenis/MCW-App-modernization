@@ -206,11 +206,7 @@ $Shortcut = $WshShell.CreateShortcut("C:\Users\Public\Desktop\Microsoft SQL Serv
 $Shortcut.TargetPath = "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\Ssms.exe"
 $Shortcut.Save()
 
-#download .net 4.8
-Start-BitsTransfer -Source 'https://go.microsoft.com/fwlink/?linkid=2088631'  -Destination "$Env:Temp\Net4.8.exe"; 
-
-#install .net 4.8
-start-process "$Env:Temp\Net4.8.exe" -args "/q /norestart" -wait
+choco install dotnetfx -y -force
 
 #Azure Portal Shortcut
 $WshShell = New-Object -comObject WScript.Shell
