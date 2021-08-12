@@ -45,11 +45,7 @@ Write-Host ".Net 4.8 not found"
 
 Write-Host "Installing .Net 4.8"
 
-#download .net 4.8
-Start-BitsTransfer -Source 'https://go.microsoft.com/fwlink/?linkid=2088631'  -Destination "$Env:Temp\Net4.8.exe"; 
-
-#install .net 4.8
-start-process "$Env:Temp\Net4.8.exe" -args "/q /norestart" -wait
+choco install dotnetfx -y -force
 
 $data=(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 461814
 }
