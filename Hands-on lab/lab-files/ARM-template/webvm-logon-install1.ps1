@@ -31,6 +31,18 @@ Wait-Install
 Write-Host "Installing App Service Migration Assistant..."
 Start-Process -file 'C:\AppServiceMigrationAssistant.msi ' -arg '/qn /l*v C:\asma_install.txt' -passthru | wait-process
 
+# Install Edge
+Wait-Install
+Write-Host "Installing Edge..."
+Start-Process -file 'C:\MicrosoftEdgeEnterpriseX64.msi' -arg '/qn /l*v C:\edge_install.txt' -passthru | wait-process
+
+# Install .NET Core 3.1 SDK
+Wait-Install
+Write-Host "Installing .NET Core 3.1 SDK..."
+$pathArgs = {C:\dotnet-sdk-3.1.406-win-x64.exe /Install /Quiet /Norestart /Logs logCore31SDK.txt}
+Invoke-Command -ScriptBlock $pathArgs
+
+
 #Validate and install dotnet
 
 if((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 528049)
@@ -57,18 +69,6 @@ Write-Host "Installed .Net 4.8 successfully"
 # Download and install Data Mirgation Assistant
 (New-Object System.Net.WebClient).DownloadFile('https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi', 'C:\DataMigrationAssistant.msi')
 Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
-
-# Install Edge
-Wait-Install
-Write-Host "Installing Edge..."
-Start-Process -file 'C:\MicrosoftEdgeEnterpriseX64.msi' -arg '/qn /l*v C:\edge_install.txt' -passthru | wait-process
-
-# Install .NET Core 3.1 SDK
-Wait-Install
-Write-Host "Installing .NET Core 3.1 SDK..."
-$pathArgs = {C:\dotnet-sdk-3.1.406-win-x64.exe /Install /Quiet /Norestart /Logs logCore31SDK.txt}
-Invoke-Command -ScriptBlock $pathArgs
-
 
 
  Write-Host "Re-installing IIS"
