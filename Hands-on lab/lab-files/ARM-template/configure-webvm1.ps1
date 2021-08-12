@@ -207,9 +207,9 @@ $Shortcut.TargetPath = "C:\Program Files (x86)\Microsoft SQL Server Management S
 $Shortcut.Save()
 
 #.Net 4.8
-#$WebClient = New-Object System.Net.WebClient
-#$WebClient.DownloadFile("https://go.microsoft.com/fwlink/?linkid=2088631","C:\ndp48-web.exe")
-#Start-Process -file 'C:\ndp48-web.exe' -arg "/q /norestart /ACCEPTEULA=1"
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://go.microsoft.com/fwlink/?linkid=2088631","C:\ndp48-web.exe")
+Start-Process -file 'C:\ndp48-web.exe' -arg "/q /norestart /ACCEPTEULA=1"
 sleep 20
 
 #Azure Portal Shortcut
