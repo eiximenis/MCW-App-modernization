@@ -41,6 +41,8 @@ else
 {
 Do{
 
+Write-Host ".Net 4.8 not found"
+
 Write-Host "Installing .Net 4.8"
 
 #download .net 4.8
