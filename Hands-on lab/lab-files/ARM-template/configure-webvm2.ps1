@@ -200,12 +200,13 @@ choco feature enable -n allowGlobalConfirmation
 
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
 
-choco install dotnetfx -y -force
 choco install sql-server-management-studio -y -force
 $WshShell = New-Object -comObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut("C:\Users\Public\Desktop\Microsoft SQL Server Management Studio 18.lnk")
 $Shortcut.TargetPath = "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\Ssms.exe"
 $Shortcut.Save()
+
+choco install dotnetfx -y -force
 
 #Azure Portal Shortcut
 $WshShell = New-Object -comObject WScript.Shell
