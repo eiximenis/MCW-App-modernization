@@ -6,7 +6,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
 ## Task 1: Moving the codebase to a GitHub repo
 
-1. Log in to your GitHub account.
+1. Browse to [GitHub](https://github.com) in your browser and log into your account.
 
 1. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
 
