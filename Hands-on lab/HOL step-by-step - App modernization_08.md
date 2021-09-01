@@ -97,7 +97,10 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
     ![PowerShell terminal shows git push command and the GitHub Sign In experoence. Sign in with your browser button is highlighted.](media/github-sign-in.png "GitHub Sign In")
 
-1. Fill-in your GitHub account credentials on the browser window to Sign-In.
+1. Fill-in your GitHub account with the following credentials to Sign-In.
+
+     - **Username:**   Provide the GitHub Username
+     - **Password:**   Provide the **Personal Acess Tocken** that has been created during the starting of this Exercise
 
 1. On the **Authorize Git Credential Manager** screen select **Authorize GotCredentialManager**. This will give your local environment permission to push the code to GitHub.
 
