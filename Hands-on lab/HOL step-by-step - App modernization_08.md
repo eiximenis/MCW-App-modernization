@@ -6,7 +6,23 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
 ## Task 1: Moving the codebase to a GitHub repo
 
-1. Login to [GitHub](https://github.com) with your account. Select the New button positioned on top of the repositories list. As an alternative you can [navigate to the new repository site here](https://github.com/new).
+1. Log in to your GitHub account.
+
+1. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
+
+    - `repo` - Full control of private repositories
+    - `workflow` - Update GitHub Action workflows
+    - `write:packages` - Upload packages to GitHub Package Registry
+    - `delete:packages` - Delete packages from GitHub Package Registry
+    - `read:org` - Read org and team membership, read org projects
+
+    ![The configured scopes for a GitHub Personal Access Token.](media/Ex4-Task1-02.png "GitHub Personal Access Token Scope Configuration")
+
+1. Copy the GitHub Personal Access Token somewhere safe and accessible for later use during the lab. **DO NOT COMMIT THIS VALUE TO YOUR REPO!**
+
+    ![The GitHub Personal Access Token. This is a secret value that should be stored somewhere safe and accessible.](media/Ex4-Task1-01.png "Created GitHub Personal Access Token")
+
+1. Select the New button positioned on top of the repositories list. As an alternative you can [navigate to the new repository site here](https://github.com/new).
 
     ![GitHub.com Landing page is shown. New button to create a new repository is highlighted.](media/github-new-repo.png "GitHub new repo")
 
