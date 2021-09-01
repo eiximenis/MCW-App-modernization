@@ -98,7 +98,7 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
     > NOTE!! Sometimes an authentication screen might not pop up, instead it might ask you to enter your credentials on Powershell itself.   
 
 
-1. Fill-in your GitHub account with the following credentials to Sign-In.
+1. Fill-in your GitHub account with the following credentials to Sign-In from Powershell.
 
      - **Username:**   Provide the GitHub Username
      - **Password:**   Provide the **Personal Acess Tocken** that has been created during the starting of this Exercise
