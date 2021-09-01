@@ -8,6 +8,8 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
 1. Browse to [GitHub](https://github.com) in your browser and log into your account.
 
+   > NOTE!! If you don't have GitHub account, browse to [GitHub](https://github.com) in your browser and signup.
+
 1. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
 
     - `repo` - Full control of private repositories
@@ -91,11 +93,10 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
     git push -u origin main
     ```
 
-1. GitHub authentication screen will pop up. Select **Sign in with your browser (2)**. A new browser pop-up will appear with the GitHub login page.
+1. GitHub authentication screen will pop up. Provide **Personal Access Tocken** that you noted earlier and click on **Sign in**.
 
     > NOTE!! Sometimes an authentication screen might not pop up, instead it might ask you to enter your credentials on Powershell itself.   
 
-    ![PowerShell terminal shows git push command and the GitHub Sign In experoence. Sign in with your browser button is highlighted.](media/github-sign-in.png "GitHub Sign In")
 
 1. Fill-in your GitHub account with the following credentials to Sign-In.
 
