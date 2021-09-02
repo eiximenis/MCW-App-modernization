@@ -3,75 +3,8 @@ Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension1.txt 
 $commonscriptpath = "replacepath\cloudlabs-common\cloudlabs-windows-functions.ps1"
 . $commonscriptpath
 
-function Wait-Install {
-    $msiRunning = 1
-    $msiMessage = ""
-    while($msiRunning -ne 0)
-    {
-        try
-        {
-            $Mutex = [System.Threading.Mutex]::OpenExisting("Global\_MSIExecute");
-            $Mutex.Dispose();
-            $DST = Get-Date
-            $msiMessage = "An installer is currently running. Please wait...$DST"
-            Write-Host $msiMessage 
-            $msiRunning = 1
-        }
-        catch
-        {
-            $msiRunning = 0
-        }
-        Start-Sleep -Seconds 1
-    }
-}
 
-
-# Install App Service Migration Assistant
-Wait-Install
-Write-Host "Installing App Service Migration Assistant..."
-Start-Process -file 'C:\AppServiceMigrationAssistant.msi ' -arg '/qn /l*v C:\asma_install.txt' -passthru | wait-process
-
-# Install Edge
-Wait-Install
-Write-Host "Installing Edge..."
-Start-Process -file 'C:\MicrosoftEdgeEnterpriseX64.msi' -arg '/qn /l*v C:\edge_install.txt' -passthru | wait-process
-
-# Install .NET Core 3.1 SDK
-Wait-Install
-Write-Host "Installing .NET Core 3.1 SDK..."
-$pathArgs = {C:\dotnet-sdk-3.1.406-win-x64.exe /Install /Quiet /Norestart /Logs logCore31SDK.txt}
-Invoke-Command -ScriptBlock $pathArgs
-
-
-#Validate and install dotnet
-
-if((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 528049)
-{
-Write-Host ".Net 4.8 is already installed"
-}
-else
-{
-Do{
-
-Write-Host ".Net 4.8 not found"
-
-Write-Host "Installing .Net 4.8"
-
-choco install dotnetfx -y -force
-
-$data=(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 461814
-}
-Until ($data)
-
-Write-Host "Installed .Net 4.8 successfully"
-}
-
-# Download and install Data Mirgation Assistant
-(New-Object System.Net.WebClient).DownloadFile('https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi', 'C:\DataMigrationAssistant.msi')
-Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
-
-
- Write-Host "Re-installing IIS"
+Write-Host "Re-installing IIS"
 
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
 $pathArgs = {C:\dotnet-hosting-2.2.2-win.exe /Install /Quiet /Norestart /Logs logCore22.txt}
