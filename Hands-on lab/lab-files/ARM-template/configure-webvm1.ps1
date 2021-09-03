@@ -73,6 +73,14 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
 
 
+# Download and install .NET Core 2.2
+Wait-Install
+(New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
+$pathArgs = {C:\dotnet-hosting-2.2.2-win.exe /Install /Quiet /Norestart /Logs logCore22.txt}
+Invoke-Command -ScriptBlock $pathArgs
+
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
+
 #Replace Path
 
 (Get-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1 -Verbos
