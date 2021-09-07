@@ -6,23 +6,45 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
 ## Task 1: Moving the codebase to a GitHub repo
 
-1. Browse to [GitHub](https://github.com) in your browser and log into your account.
+1. Browse to `https://github.com` in your browser and log into your account.
 
-   > NOTE!! If you don't have GitHub account, browse to [GitHub](https://github.com) in your browser and signup.
+   > NOTE!! If you don't have GitHub account, browse to `https://github.com` in your browser and signup.
 
-1. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
+1. Create a Personal Access Token as described below.
 
-    - `repo` - Full control of private repositories
-    - `workflow` - Update GitHub Action workflows
-    - `write:packages` - Upload packages to GitHub Package Registry
-    - `delete:packages` - Delete packages from GitHub Package Registry
-    - `read:org` - Read org and team membership, read org projects
+     1. In the upper-right corner of your GitHub page, select your profile photo, then click **Settings**.
 
-    ![The configured scopes for a GitHub Personal Access Token.](media/Ex4-Task1-02.png "GitHub Personal Access Token Scope Configuration")
+         ![](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/stage/Hands-on%20lab/media/github-01.png?raw=true)
 
-1. Copy the GitHub Personal Access Token somewhere safe and accessible for later use during the lab. **DO NOT COMMIT THIS VALUE TO YOUR REPO!**
+     2. From the left hand side menu, select **Developer settings**.
 
-    ![The GitHub Personal Access Token. This is a secret value that should be stored somewhere safe and accessible.](media/Ex4-Task1-01.png "Created GitHub Personal Access Token")
+        ![](media/github-02.png)
+
+     3. Now, click **Personal access tokens** and select **Generate new token** button on the right. Provide the GitHub password if prompted.
+
+        ![](media/github-03.png)
+
+     4. Select the scopes or permissions you would like to grant this token.
+
+          1. Note: Enter **Auth-token** in the note field.
+
+          2. Select scopes: Select the following scopes when configuring your GitHub Personal Access Token
+
+             - `repo` - Full control of private repositories
+             - `workflow` - Update GitHub Action workflows
+             - `write:packages` - Upload packages to GitHub Package Registry
+             - `delete:packages` - Delete packages from GitHub Package Registry
+             - `read:org` - Read org and team membership, read org projects
+
+             ![The configured scopes for a GitHub Personal Access Token.](media/github-04.png "GitHub Personal Access Token Scope Configuration")
+
+     5. Leave other values as default and select **Generate token**.
+
+        ![](media/github-05.png)
+  
+1. Click on the **Copy** icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
+
+    ![The GitHub Personal Access Token. This is a secret value that should be stored somewhere safe and accessible.](media/github-06.png "Created GitHub Personal Access Token")
 
 1. Select the New button positioned on top of the repositories list. As an alternative you can [navigate to the new repository site here](https://github.com/new).
 
