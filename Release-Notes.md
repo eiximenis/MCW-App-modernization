@@ -1,4 +1,9 @@
 # Release Notes
+### 1 September 2021
+  - Minor updates in the Lab Guide.
+  - For pushing the source code to GitHub, password Authentication has been removed that is being used to connect to GitHub in [Exercise 4, Task 1](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/stage/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_08.md). Users need to use Personal Access Token instead of password for connecting to github using Powershell. Instructions and screenshots have been added in the lab guide for creating the Personal Access Token. 
+
+------------
 
 ### 24 July 2021
   - Minor update in the Lab Guide.
