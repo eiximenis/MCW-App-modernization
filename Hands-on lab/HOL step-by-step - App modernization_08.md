@@ -6,7 +6,25 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
 
 ## Task 1: Moving the codebase to a GitHub repo
 
-1. Login to [GitHub](https://github.com) with your account. Select the New button positioned on top of the repositories list. As an alternative you can [navigate to the new repository site here](https://github.com/new).
+1. Browse to [GitHub](https://github.com) in your browser and log into your account.
+
+   > NOTE!! If you don't have GitHub account, browse to [GitHub](https://github.com) in your browser and signup.
+
+1. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
+
+    - `repo` - Full control of private repositories
+    - `workflow` - Update GitHub Action workflows
+    - `write:packages` - Upload packages to GitHub Package Registry
+    - `delete:packages` - Delete packages from GitHub Package Registry
+    - `read:org` - Read org and team membership, read org projects
+
+    ![The configured scopes for a GitHub Personal Access Token.](media/Ex4-Task1-02.png "GitHub Personal Access Token Scope Configuration")
+
+1. Copy the GitHub Personal Access Token somewhere safe and accessible for later use during the lab. **DO NOT COMMIT THIS VALUE TO YOUR REPO!**
+
+    ![The GitHub Personal Access Token. This is a secret value that should be stored somewhere safe and accessible.](media/Ex4-Task1-01.png "Created GitHub Personal Access Token")
+
+1. Select the New button positioned on top of the repositories list. As an alternative you can [navigate to the new repository site here](https://github.com/new).
 
     ![GitHub.com Landing page is shown. New button to create a new repository is highlighted.](media/github-new-repo.png "GitHub new repo")
 
@@ -75,13 +93,14 @@ In this exercise, you will move the codebase to a GitHub Repo, create a staging 
     git push -u origin main
     ```
 
-1. GitHub authentication screen will pop up. Select **Sign in with your browser (2)**. A new browser pop-up will appear with the GitHub login page.
+1. GitHub authentication screen will pop up. Provide **Personal Access Token** that you noted earlier and click on **Sign in**.
 
-    > NOTE!! Sometimes an authentication screen might not pop up, instead it might ask you to enter your credentials on Powershell itself.   
-
-    ![PowerShell terminal shows git push command and the GitHub Sign In experoence. Sign in with your browser button is highlighted.](media/github-sign-in.png "GitHub Sign In")
-
-1. Fill-in your GitHub account credentials on the browser window to Sign-In.
+    > **NOTE**: Sometimes an authentication screen might not pop up, instead it might ask you to enter your credentials on Powershell itself.   
+      
+     > Fill-in your GitHub account with the following details to Sign-In from Powershell.
+      
+     > - **Username:**   Provide the GitHub Username
+     > - **Password:**   Provide the **Personal Access Token** that has been created during the starting of this Exercise
 
 1. On the **Authorize Git Credential Manager** screen select **Authorize GotCredentialManager**. This will give your local environment permission to push the code to GitHub.
 
