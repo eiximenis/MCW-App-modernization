@@ -1,6 +1,11 @@
 # Release Notes
+### 8 September 2021
+  - Minor update in the Lab Guide.
+  - Setting up CI/CD pipeline for web app in [Exercise 4, Task 3](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/stage/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_08.md), the UI got updated for changing the .Net version of App service(slot) inside deployment centre. Instructions and screenshots have been added for changing the .Net version to reflect new UI of App service(slot) in the lab guide.
+
+------------
 ### 1 September 2021
-  - Minor updates in the Lab Guide.
+  - Minor update in the Lab Guide.
   - For pushing the source code to GitHub, password Authentication has been removed that is being used to connect to GitHub in [Exercise 4, Task 1](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/stage/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_08.md). Users need to use Personal Access Token instead of password for connecting to github using Powershell. Instructions and screenshots have been added in the lab guide for creating the Personal Access Token. 
 
 ------------
