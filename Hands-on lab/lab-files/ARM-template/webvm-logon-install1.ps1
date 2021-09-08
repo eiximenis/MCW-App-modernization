@@ -3,6 +3,35 @@ Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension1.txt 
 $commonscriptpath = "replacepath\cloudlabs-common\cloudlabs-windows-functions.ps1"
 . $commonscriptpath
 
+function Wait-Install {
+    $msiRunning = 1
+    $msiMessage = ""
+    while($msiRunning -ne 0)
+    {
+        try
+        {
+            $Mutex = [System.Threading.Mutex]::OpenExisting("Global\_MSIExecute");
+            $Mutex.Dispose();
+            $DST = Get-Date
+            $msiMessage = "An installer is currently running. Please wait...$DST"
+            Write-Host $msiMessage 
+            $msiRunning = 1
+        }
+        catch
+        {
+            $msiRunning = 0
+        }
+        Start-Sleep -Seconds 1
+    }
+}
+
+
+# Install .NET Core 3.1 SDK
+Wait-Install
+Write-Host "Installing .NET Core 3.1 SDK..."
+$pathArgs = {C:\dotnet-sdk-3.1.406-win-x64.exe /Install /Quiet /Norestart /Logs logCore31SDK.txt}
+Invoke-Command -ScriptBlock $pathArgs
+
 
 Write-Host "Re-installing IIS"
 
