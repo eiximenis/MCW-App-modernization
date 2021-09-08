@@ -152,10 +152,10 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab
 
 #Replace Path
 
-(Get-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install2.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install2.ps1 -Verbos
+(Get-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1 -Verbos
 
 # Schedule Installs for first Logon
-$argument = "-File `"C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\ARM-template\webvm-logon-install2.ps1`""
+$argument = "-File `"C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\ARM-template\webvm-logon-install1.ps1`""
 $triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
 $action = New-ScheduledTaskAction -Execute "powershell" -Argument $argument 
 Register-ScheduledTask -TaskName "Install Lab Requirements" -Trigger $triggerAt -Action $action -User demouser
