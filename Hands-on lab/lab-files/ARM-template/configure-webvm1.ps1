@@ -70,21 +70,19 @@ InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
-$branchName = "stage"
-
+	$branchName = "main"
 # Download and extract the starter solution files
 # ZIP File sometimes gets corrupted
+Write-Host "Downloading MCW-App-modernization from GitHub" -ForegroundColor Green
 New-Item -ItemType directory -Path C:\MCW
-#while((Get-ChildItem -Directory C:\MCW | Measure-Object).Count -eq 0 )
-#{
-#    (New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/archive/$branchName.zip", 'C:\MCW.zip')
-#    Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
-#}
-(New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/archive/stage.zip", 'C:\MCW.zip')
-Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
-
-# Copy Web Site Files
-Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\web-site-publish.zip" -DestinationPath 'C:\inetpub\wwwroot' -Force
+while((Get-ChildItem -Directory C:\MCW | Measure-Object).Count -eq 0 )
+{
+    (New-Object System.Net.WebClient).DownloadFile("https://github.com/microsoft/MCW-App-modernization/zipball/$branchName", 'C:\MCW.zip')
+    Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
+}
+#rename the random branch name
+$item = get-item "c:\mcw\*"
+Rename-Item $item -NewName "MCW-App-modernization-$branchName"
 
 # Replace SQL Connection String
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
@@ -94,18 +92,26 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab
 
 (Get-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1 -Verbos
 
+# Download 3.1.4 SDK
+(New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/70062b11-491c-403c-91db-9d84462ee292/5db435e39128cbb608e76bf5111ab3dc/dotnet-sdk-3.1.413-win-x64.exe', 'C:\dotnet-sdk-3.1.413-win-x64.exe')
+
+
 # Schedule Installs for first Logon
 $argument = "-File `"C:\MCW\MCW-App-modernization-stage\Hands-on lab\lab-files\ARM-template\webvm-logon-install1.ps1`""
 $triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
 $action = New-ScheduledTaskAction -Execute "powershell" -Argument $argument 
 Register-ScheduledTask -TaskName "Install Lab Requirements" -Trigger $triggerAt -Action $action -User demouser
 
-# Download and install .NET Core 2.2
-Wait-Install
-(New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/5efd5ee8-4df6-4b99-9feb-87250f1cd09f/552f4b0b0340e447bab2f38331f833c5/dotnet-hosting-2.2.2-win.exe', 'C:\dotnet-hosting-2.2.2-win.exe')
-$pathArgs = {C:\dotnet-hosting-2.2.2-win.exe /Install /Quiet /Norestart /Logs logCore22.txt}
-Invoke-Command -ScriptBlock $pathArgs
 
+# Download Windows Hosting
+Wait-Install
+(New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/a0da9621-68f0-439a-b617-4697ee0669e3/38eb4aa6e879b9f06b73599ea2e1535f/dotnet-hosting-5.0.10-win.exe', 'C:\dotnet-hosting-5.0.10-win.exe')
+$pathArgs = {C:\dotnet-hosting-5.0.10-win.exe /Install /Quiet /Norestart /Logs logHostingPackage.txt}
+Invoke-Command -ScriptBlock $pathArgs
+# Download and install SQL Server Management Studio
+Wait-Install
+(New-Object System.Net.WebClient).DownloadFile('https://aka.ms/ssmsfullsetup', 'C:\SSMS-Setup.exe')
+$pathArgs = {C:\SS
 
 # cred file
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
