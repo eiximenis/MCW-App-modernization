@@ -90,14 +90,14 @@ Rename-Item $item -NewName "MCW-App-modernization-$branchName"
 
 #Replace Path
 
-(Get-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1 -Verbos
+(Get-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1 -Verbos
 
 # Download 3.1.4 SDK
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/70062b11-491c-403c-91db-9d84462ee292/5db435e39128cbb608e76bf5111ab3dc/dotnet-sdk-3.1.413-win-x64.exe', 'C:\dotnet-sdk-3.1.413-win-x64.exe')
 
 
 # Schedule Installs for first Logon
-$argument = "-File `"C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\ARM-template\webvm-logon-install1.ps1`""
+$argument = "-File `"C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\ARM-template\webvm-logon-install.ps1`""
 $triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
 $action = New-ScheduledTaskAction -Execute "powershell" -Argument $argument 
 Register-ScheduledTask -TaskName "Install Lab Requirements" -Trigger $triggerAt -Action $action -User demouser
