@@ -18,10 +18,10 @@ param (
     $DeploymentID,
     
      [string]
-$azuresubscriptionid,
+$azsubscriptionid,
   
   [string]
-  $azuretenantid
+  $aztenantid
 )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
@@ -115,8 +115,8 @@ CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID
     
 Replace sub and tenant id
 
-(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-SUBSCRIPTION-ID", "$azuresubscriptionid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
-(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-TENANT-ID", "azuretenantid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
+(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-SUBSCRIPTION-ID", "$azsubscriptionid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
+(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-TENANT-ID", "aztenantid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
 
 #Autologin
 $Username = "demouser"
