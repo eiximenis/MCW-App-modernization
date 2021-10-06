@@ -1,15 +1,34 @@
 param (
     [Parameter(Mandatory=$False)] [string] $SqlIP = "",
-    [Parameter(Mandatory=$False)] [string] $SqlPass = ""
+    [Parameter(Mandatory=$False)] [string] $SqlPass = "",
+    [Parameter(Mandatory = $true)]
+    [string]
+    $AzureUserName,
+
+    [string]
+    $AzurePassword,
+
+    [string]
+    $ODLID,
+
+    [string]
+    $InstallCloudLabsShadow,
+
+    [string]
+    $DeploymentID,
+    
+     [string]
+$azuresubscriptionid,
+  
+  [string]
+  $azuretenantid
 )
-function Disable-InternetExplorerESC {
-    $AdminKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}"
-    $UserKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}"
-    Set-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0 -Force
-    Set-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0 -Force
-    Stop-Process -Name Explorer -Force
-    Write-Host "IE Enhanced Security Configuration (ESC) has been disabled." -ForegroundColor Green
-}
+
+Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
+
+$vmAdminUsername="demouser"
+$trainerUserName="trainer"
+$trainerUserPassword="Password.!!1"
 
 function Wait-Install {
     $msiRunning = 1
@@ -33,28 +52,34 @@ function Wait-Install {
     }
 }
 
+#Import Common Functions
+$path = pwd
+$path=$path.Path
+$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
+# Run Imported functions from cloudlabs-windows-functions.ps1
+
+InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
+
+
+
 # To resolve the error of https://github.com/microsoft/MCW-App-modernization/issues/68. The cause of the error is Powershell by default uses TLS 1.0 to connect to website, but website security requires TLS 1.2. You can change this behavior with running any of the below command to use all protocols. You can also specify single protocol.
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
 [Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
 
-# Disable IE ESC
-Disable-InternetExplorerESC
-
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
-$branchName = "main"
-
+	$branchName = "prod-1"
 # Download and extract the starter solution files
 # ZIP File sometimes gets corrupted
 Write-Host "Downloading MCW-App-modernization from GitHub" -ForegroundColor Green
 New-Item -ItemType directory -Path C:\MCW
 while((Get-ChildItem -Directory C:\MCW | Measure-Object).Count -eq 0 )
 {
-    (New-Object System.Net.WebClient).DownloadFile("https://github.com/microsoft/MCW-App-modernization/zipball/$branchName", 'C:\MCW.zip')
+    (New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/zipball/$branchName", 'C:\MCW.zip')
     Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
 }
-
-
 #rename the random branch name
 $item = get-item "c:\mcw\*"
 Rename-Item $item -NewName "MCW-App-modernization-$branchName"
@@ -62,19 +87,21 @@ Rename-Item $item -NewName "MCW-App-modernization-$branchName"
 # Replace SQL Connection String
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
 
-# Downloading Deferred Installs
-# Download App Service Migration Assistant 
-(New-Object System.Net.WebClient).DownloadFile('https://appmigration.microsoft.com/api/download/windows/AppServiceMigrationAssistant.msi', 'C:\AppServiceMigrationAssistant.msi')
-# Download Edge 
-(New-Object System.Net.WebClient).DownloadFile('https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/e2d06b69-9e44-45e1-bdf5-b3b827fe06b2/MicrosoftEdgeEnterpriseX64.msi', 'C:\MicrosoftEdgeEnterpriseX64.msi')
+
+#Replace Path
+
+(Get-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install1.ps1 -Verbos
+
 # Download 3.1.4 SDK
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/70062b11-491c-403c-91db-9d84462ee292/5db435e39128cbb608e76bf5111ab3dc/dotnet-sdk-3.1.413-win-x64.exe', 'C:\dotnet-sdk-3.1.413-win-x64.exe')
 
+
 # Schedule Installs for first Logon
-$argument = "-File `"C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\ARM-template\webvm-logon-install.ps1`""
+$argument = "-File `"C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\ARM-template\webvm-logon-install1.ps1`""
 $triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
 $action = New-ScheduledTaskAction -Execute "powershell" -Argument $argument 
 Register-ScheduledTask -TaskName "Install Lab Requirements" -Trigger $triggerAt -Action $action -User demouser
+
 
 # Download Windows Hosting
 Wait-Install
@@ -82,19 +109,29 @@ Wait-Install
 $pathArgs = {C:\dotnet-hosting-5.0.10-win.exe /Install /Quiet /Norestart /Logs logHostingPackage.txt}
 Invoke-Command -ScriptBlock $pathArgs
 
-# Download and install SQL Server Management Studio
-Wait-Install
-(New-Object System.Net.WebClient).DownloadFile('https://aka.ms/ssmsfullsetup', 'C:\SSMS-Setup.exe')
-$pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart /Logs logSSMS.txt}
-Invoke-Command -ScriptBlock $pathArgs
 
-# Install Git
-Wait-Install
-(New-Object System.Net.WebClient).DownloadFile('https://github.com/git-for-windows/git/releases/download/v2.30.0.windows.2/Git-2.30.0.2-64-bit.exe', 'C:\Git-2.30.0.2-64-bit.exe')
-Start-Process -file 'C:\Git-2.30.0.2-64-bit.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:\git_install.txt" /NORESTART /CLOSEAPPLICATIONS' -passthru | wait-process
+# cred file
+CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+    
+Replace sub and tenant id
 
-# Install VS Code
-Wait-Install
-(New-Object System.Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?LinkID=623230', 'C:\vscode.exe')
-Start-Process -file 'C:\vscode.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:\vscode_install.txt" /NORESTART /FORCECLOSEAPPLICATIONS /mergetasks="!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"' -passthru | wait-process
+(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-SUBSCRIPTION-ID", "$azuresubscriptionid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
+(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-TENANT-ID", "azuretenantid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
 
+#Autologin
+$Username = "demouser"
+$Pass = "Password.1!!"
+$RegistryPath = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String 
+Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
+Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
+
+$Validstatus="Pending"  ##Failed or Successful at the last step
+$Validmessage="Post Deployment is Pending"
+
+#Set the final deployment status
+CloudlabsManualAgent setStatus
+
+Stop-Transcript  
+
+Restart-Computer
