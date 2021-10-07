@@ -131,11 +131,6 @@ New-Item -ItemType directory -Path C:\MCW
 (New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/archive/$branchName.zip", 'C:\MCW.zip')
 Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
 
-#rename the random branch name
-$item = get-item "c:\mcw\*"
-Rename-Item $item -NewName "MCW-App-modernization-$branchName"
-
-
 # Copy Web Site Files
 Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\web-site-publish.zip" -DestinationPath 'C:\inetpub\wwwroot' -Force
 
