@@ -25,6 +25,10 @@ function Wait-Install {
     }
 }
 
+# Install App Service Migration Assistant
+Wait-Install
+Write-Host "Installing App Service Migration Assistant..."
+Start-Process -file 'C:\AppServiceMigrationAssistant.msi ' -arg '/qn /l*v C:\asma_install.txt' -passthru | wait-process
 
 # Install .NET Core 3.1 SDK
 Wait-Install
