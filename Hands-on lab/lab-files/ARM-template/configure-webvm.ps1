@@ -16,12 +16,7 @@ param (
 
     [string]
     $DeploymentID,
-    
-     [string]
-  $AzureTenantID,
-  
-  [string]
-  $AzureSubscriptionID,
+   
   
      [string]
 $AzureSubscriptionID,
