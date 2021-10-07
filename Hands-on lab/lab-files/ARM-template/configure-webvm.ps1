@@ -71,13 +71,13 @@ New-Item -ItemType directory -Path C:\MCW
 (New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/zipball/$branchName", 'C:\MCW.zip')
 Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
 
+#Rename the folder
 $item = get-item "c:\mcw\*"
 Rename-Item $item -NewName "MCW-App-modernization-$branchName"
 
 # Copy Web Site Files
 #Write-Host "Copying default website files..."
 #Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\web-deploy-files.zip" -DestinationPath 'C:\inetpub\wwwroot' -Force
-
 
 # Replace SQL Connection String
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
@@ -92,7 +92,7 @@ $commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1
 
 #CloudLabsManualAgent
 
-#CloudLabsManualAgent Install
+CloudLabsManualAgent Install
 
 WindowsServerCommon
 InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
@@ -151,11 +151,11 @@ Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String
 Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
 Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
 
-#$Validstatus="Pending"  ##Failed or Successful at the last step
-#$Validmessage="Post Deployment is Pending"
+$Validstatus="Pending"  ##Failed or Successful at the last step
+$Validmessage="Post Deployment is Pending"
 
 #Set the final deployment status
-#CloudlabsManualAgent setStatus
+CloudlabsManualAgent setStatus
 
 Stop-Transcript  
 
