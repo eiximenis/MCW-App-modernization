@@ -30,12 +30,16 @@ Wait-Install
 Write-Host "Installing App Service Migration Assistant..."
 Start-Process -file 'C:\AppServiceMigrationAssistant.msi ' -arg '/qn /l*v C:\asma_install.txt' -passthru | wait-process
 
+# Install Edge
+Wait-Install
+Write-Host "Installing Edge..."
+Start-Process -file 'C:\MicrosoftEdgeEnterpriseX64.msi' -arg '/qn /l*v C:\edge_install.txt' -passthru | wait-process
+
 # Install .NET Core 3.1 SDK
 Wait-Install
 Write-Host "Installing .NET Core 3.1 SDK..."
 $pathArgs = {C:\dotnet-sdk-3.1.413-win-x64.exe /Install /Quiet /Norestart /Logs logCore31SDK.txt}
 Invoke-Command -ScriptBlock $pathArgs
-
 
 Write-Host "Restarting IIS"
 #iisreset.exe /restart 
