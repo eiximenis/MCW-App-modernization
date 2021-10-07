@@ -39,11 +39,12 @@ Wait-Install
 Write-Host "Copying default website files..."
 Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\web-deploy-files.zip" -DestinationPath 'C:\inetpub\wwwroot' -Force
 
+Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
 
 Write-Host "Restarting IIS"
-#iisreset.exe /restart 
+iisreset.exe /restart 
 
-iisreset /noforce 
+#iisreset /noforce 
 
 Write-Host "Re-installed IIS"
 
@@ -90,7 +91,5 @@ else{
 CloudlabsManualAgent setStatus
 
 CloudLabsManualAgent Start
-
-Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
 
 Stop-Transcript
