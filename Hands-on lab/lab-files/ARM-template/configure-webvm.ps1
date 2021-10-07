@@ -70,7 +70,7 @@ InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
-	$branchName = "prod-1"
+$branchName = "prod-1"
 # Download and extract the starter solution files
 # ZIP File sometimes gets corrupted
 Write-Host "Downloading MCW-App-modernization from GitHub" -ForegroundColor Green
@@ -81,14 +81,14 @@ while((Get-ChildItem -Directory C:\MCW | Measure-Object).Count -eq 0 )
     Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
 }
 
+#rename the random branch name
+$item = get-item "c:\mcw\*"
+Rename-Item $item -NewName "MCW-App-modernization-$branchName"
+
 # Copy Web Site Files
 Wait-Install
 Write-Host "Copying default website files..."
 Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\web-deploy-files.zip" -DestinationPath 'C:\inetpub\wwwroot' -Force
-
-#rename the random branch name
-$item = get-item "c:\mcw\*"
-Rename-Item $item -NewName "MCW-App-modernization-$branchName"
 
 # Replace SQL Connection String
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
