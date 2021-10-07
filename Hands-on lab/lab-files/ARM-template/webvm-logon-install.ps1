@@ -41,7 +41,9 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on l
 
 
 Write-Host "Restarting IIS"
-iisreset.exe /restart 
+#iisreset.exe /restart 
+
+iisreset /noforce 
 
 Write-Host "Re-installed IIS"
 
