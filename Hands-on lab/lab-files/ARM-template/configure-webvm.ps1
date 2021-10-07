@@ -113,11 +113,6 @@ Invoke-Command -ScriptBlock $pathArgs
 # cred file
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
     
-#Replace sub and tenant id
-
-#(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-SUBSCRIPTION-ID", "$azsubscriptionid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
-#(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-TENANT-ID", "aztenantid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
-
 #Autologin
 $Username = "demouser"
 $Pass = "Password.1!!"
