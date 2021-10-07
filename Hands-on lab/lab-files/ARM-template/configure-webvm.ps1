@@ -26,7 +26,6 @@ $AzureSubscriptionID,
 )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
-
 $vmAdminUsername="demouser"
 $trainerUserName="trainer"
 $trainerUserPassword="Password.!!1"
@@ -52,29 +51,6 @@ function Wait-Install {
         Start-Sleep -Seconds 1
     }
 }
-
-# To resolve the error of https://github.com/microsoft/MCW-App-modernization/issues/68. The cause of the error is Powershell by default uses TLS 1.0 to connect to website, but website security requires TLS 1.2. You can change this behavior with running any of the below command to use all protocols. You can also specify single protocol.
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
-[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
-
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-
-#Import Common Functions
-$path = pwd
-$path=$path.Path
-$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
-. $commonscriptpath
-
-# Run Imported functions from cloudlabs-windows-functions.ps1
-
-#CloudLabsManualAgent
-
-CloudLabsManualAgent Install
-
-WindowsServerCommon
-InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
-InstallAzPowerShellModule
-
 
 Function Enable-CloudLabsEmbeddedShadow($vmAdminUsername, $trainerUserName, $trainerUserPassword)
 {
@@ -118,28 +94,52 @@ $Action= New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell
 Register-ScheduledTask -TaskName "shadowshortcut" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest -Force
 }
 
-# Enable Embedded shadow
-Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
+# To resolve the error of https://github.com/microsoft/MCW-App-modernization/issues/68. The cause of the error is Powershell by default uses TLS 1.0 to connect to website, but website security requires TLS 1.2. You can change this behavior with running any of the below command to use all protocols. You can also specify single protocol.
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
+[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
 
+
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 $branchName = "prod-1"
+
 # Download and extract the starter solution files
 # ZIP File sometimes gets corrupted
 Write-Host "Downloading MCW-App-modernization from GitHub" -ForegroundColor Green
 New-Item -ItemType directory -Path C:\MCW
 
-(New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/archive/$branchName.zip", 'C:\MCW.zip')
+(New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/zipball/$branchName", 'C:\MCW.zip')
 Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
 
+
 # Copy Web Site Files
+Wait-Install
+Write-Host "Copying default website files..."
 Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\web-deploy-files.zip" -DestinationPath 'C:\inetpub\wwwroot' -Force
+
 
 # Replace SQL Connection String
 ((Get-Content -path C:\inetpub\wwwroot\config.release.json -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path C:\inetpub\wwwroot\config.json
 
-#Replace Path
+#Import Common Functions
+$path = pwd
+$path=$path.Path
+$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
 
-(Get-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1 -Verbos
+# Run Imported functions from cloudlabs-windows-functions.ps1
+
+#CloudLabsManualAgent
+
+#CloudLabsManualAgent Install
+
+WindowsServerCommon
+InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
+InstallAzPowerShellModule
+CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+
+# Enable Embedded shadow
+Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
 
 # Downloading Deferred Installs
 # Download App Service Migration Assistant 
@@ -148,6 +148,10 @@ Expand-Archive -LiteralPath "C:\MCW\MCW-App-modernization-$branchName\Hands-on l
 (New-Object System.Net.WebClient).DownloadFile('https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/e2d06b69-9e44-45e1-bdf5-b3b827fe06b2/MicrosoftEdgeEnterpriseX64.msi', 'C:\MicrosoftEdgeEnterpriseX64.msi')
 # Download 3.1.4 SDK
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/70062b11-491c-403c-91db-9d84462ee292/5db435e39128cbb608e76bf5111ab3dc/dotnet-sdk-3.1.413-win-x64.exe', 'C:\dotnet-sdk-3.1.413-win-x64.exe')
+
+#Replace Path
+
+(Get-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1 -Verbos
 
 # Schedule Installs for first Logon
 $argument = "-File `"C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\ARM-template\webvm-logon-install.ps1`""
@@ -161,6 +165,11 @@ Wait-Install
 $pathArgs = {C:\dotnet-hosting-5.0.10-win.exe /Install /Quiet /Norestart /Logs logHostingPackage.txt}
 Invoke-Command -ScriptBlock $pathArgs
 
+# Download and install SQL Server Management Studio
+Wait-Install
+(New-Object System.Net.WebClient).DownloadFile('https://aka.ms/ssmsfullsetup', 'C:\SSMS-Setup.exe')
+$pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart /Logs logSSMS.txt}
+Invoke-Command -ScriptBlock $pathArgs
 
 # Install Git
 Wait-Install
@@ -172,20 +181,6 @@ Wait-Install
 (New-Object System.Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?LinkID=623230', 'C:\vscode.exe')
 Start-Process -file 'C:\vscode.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:\vscode_install.txt" /NORESTART /FORCECLOSEAPPLICATIONS /mergetasks="!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"' -passthru | wait-process
 
-# Download and install SQL Server Management Studio
-Wait-Install
-(New-Object System.Net.WebClient).DownloadFile('https://aka.ms/ssmsfullsetup', 'C:\SSMS-Setup.exe')
-$pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart /Logs logSSMS.txt}
-Invoke-Command -ScriptBlock $pathArgs
-
-#Cred file
-CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
-    
-#Replace sub and tenant id
-
-#(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-SUBSCRIPTION-ID", "$azsubscriptionid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
-#(Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "GET-TENANT-ID", "$aztenantid"} | Set-Content -Path "c:\LabFiles\AzureCreds.txt"
-
 
 #Autologin
 $Username = "demouser"
@@ -195,11 +190,11 @@ Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String
 Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
 Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
 
-$Validstatus="Pending"  ##Failed or Successful at the last step
-$Validmessage="Post Deployment is Pending"
+#$Validstatus="Pending"  ##Failed or Successful at the last step
+#$Validmessage="Post Deployment is Pending"
 
 #Set the final deployment status
-CloudlabsManualAgent setStatus
+#CloudlabsManualAgent setStatus
 
 Stop-Transcript  
 
