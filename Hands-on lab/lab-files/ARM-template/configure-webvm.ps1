@@ -153,7 +153,7 @@ Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPas
 
 #Replace Path
 
-(Get-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-stage\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1 -Verbos
+(Get-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-$branchName\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1 -Verbos
 
 # Schedule Installs for first Logon
 $argument = "-File `"C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\ARM-template\webvm-logon-install.ps1`""
