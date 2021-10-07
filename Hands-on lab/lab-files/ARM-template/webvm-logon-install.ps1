@@ -42,9 +42,9 @@ $pathArgs = {C:\dotnet-sdk-3.1.413-win-x64.exe /Install /Quiet /Norestart /Logs 
 Invoke-Command -ScriptBlock $pathArgs
 
 Write-Host "Restarting IIS"
-#iisreset.exe /restart 
+iisreset.exe /restart 
 
-iisreset /noforce
+#iisreset /noforce
 
 Write-Host "Re-installed IIS"
 
