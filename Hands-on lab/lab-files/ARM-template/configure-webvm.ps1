@@ -111,6 +111,8 @@ New-Item -ItemType directory -Path C:\MCW
 (New-Object System.Net.WebClient).DownloadFile("https://github.com/CloudLabs-MCW/MCW-App-modernization/zipball/$branchName", 'C:\MCW.zip')
 Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\MCW' -Force
 
+$item = get-item "c:\mcw\*"
+Rename-Item $item -NewName "MCW-App-modernization-$branchName"
 
 # Copy Web Site Files
 Wait-Install
