@@ -26,9 +26,9 @@ $AzureSubscriptionID,
 )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
-$vmAdminUsername="demouser"
-$trainerUserName="trainer"
-$trainerUserPassword="Password.!!1"
+#$vmAdminUsername="demouser"
+#$trainerUserName="trainer"
+#$trainerUserPassword="Password.!!1"
 
 function Wait-Install {
     $msiRunning = 1
@@ -52,47 +52,7 @@ function Wait-Install {
     }
 }
 
-Function Enable-CloudLabsEmbeddedShadow($vmAdminUsername, $trainerUserName, $trainerUserPassword)
-{
-Write-Host "Enabling CloudLabsEmbeddedShadow"
-#Created Trainer Account and Add to Administrators Group
-$trainerUserPass = $trainerUserPassword | ConvertTo-SecureString -AsPlainText -Force
 
-New-LocalUser -Name $trainerUserName -Password $trainerUserPass -FullName "$trainerUserName" -Description "CloudLabs EmbeddedShadow User" -PasswordNeverExpires
-Add-LocalGroupMember -Group "Administrators" -Member "$trainerUserName"
-
-#Add Windows regitary to enable Shadow
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v Shadow /t REG_DWORD /d 2
-
-#Download Shadow.ps1 and Shadow.xml file in VM
-$drivepath="C:\Users\Public\Documents"
-$WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/Shadow.ps1","$drivepath\Shadow.ps1")
-$WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/shadow.xml","$drivepath\shadow.xml")
-$WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/ShadowSession.zip","C:\Packages\ShadowSession.zip")
-$WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/executetaskscheduler.ps1","$drivepath\executetaskscheduler.ps1")
-$WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/shadowshortcut.ps1","$drivepath\shadowshortcut.ps1")
-
-# Unzip Shadow User Session Shortcut to Trainer Desktop
-#$trainerloginuser= "$trainerUserName" + "." + "$($env:ComputerName)"
-#Expand-Archive -LiteralPath 'C:\Packages\ShadowSession.zip' -DestinationPath "C:\Users\$trainerloginuser\Desktop" -Force
-#Expand-Archive -LiteralPath 'C:\Packages\ShadowSession.zip' -DestinationPath "C:\Users\$trainerUserName\Desktop" -Force
-
-#Replace vmAdminUsernameValue with VM Admin UserName in script content 
-(Get-Content -Path "$drivepath\Shadow.ps1") | ForEach-Object {$_ -Replace "vmAdminUsernameValue", "$vmAdminUsername"} | Set-Content -Path "$drivepath\Shadow.ps1"
-(Get-Content -Path "$drivepath\shadow.xml") | ForEach-Object {$_ -Replace "vmAdminUsernameValue", "$trainerUserName"} | Set-Content -Path "$drivepath\shadow.xml"
-(Get-Content -Path "$drivepath\shadow.xml") | ForEach-Object {$_ -Replace "ComputerNameValue", "$($env:ComputerName)"} | Set-Content -Path "$drivepath\shadow.xml"
-(Get-Content -Path "$drivepath\shadowshortcut.ps1") | ForEach-Object {$_ -Replace "vmAdminUsernameValue", "$trainerUserName"} | Set-Content -Path "$drivepath\shadowshortcut.ps1"
-sleep 2
-
-# Scheduled Task to Run Shadow.ps1 AtLogOn
-schtasks.exe /Create /XML $drivepath\shadow.xml /tn Shadowtask
-
-$Trigger= New-ScheduledTaskTrigger -AtLogOn
-$User= "$($env:ComputerName)\$trainerUserName" 
-$Action= New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe" -Argument "-executionPolicy Unrestricted -File $drivepath\shadowshortcut.ps1 -WindowStyle Hidden"
-Register-ScheduledTask -TaskName "shadowshortcut" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest -Force
-}
 
 # To resolve the error of https://github.com/microsoft/MCW-App-modernization/issues/68. The cause of the error is Powershell by default uses TLS 1.0 to connect to website, but website security requires TLS 1.2. You can change this behavior with running any of the below command to use all protocols. You can also specify single protocol.
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
@@ -140,7 +100,7 @@ InstallAzPowerShellModule
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
 
 # Enable Embedded shadow
-Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
+#Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
 
 # Downloading Deferred Installs
 # Download App Service Migration Assistant 
