@@ -1,5 +1,10 @@
 # Release Notes
 
+### 12 October 2021
+  - Minor updates in the Lab Guide.
+  - Updated the screenshot in Exercise 2 to launch the SQL Server Management Studio from SQL VM for better user experience.
+-----------------
+
 ### 20 September 2021
   - Minor updates in the Lab Guide.
   - For migrating on-premises data to Azure in [Exercise 1](https://github.com/CloudLabs-MCW/MCW-App-modernization/blob/stage/Hands-on%20lab/HOL%20step-by-step%20-%20App%20modernization_05.md), the UI for **Azure Migrate** has been updated from Azure end. Lab guide has been updated with screenshots and instructions related to new UI.
