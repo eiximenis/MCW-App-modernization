@@ -29,20 +29,17 @@ namespace PartsUnlimited.Models
             {
                 var db = serviceScope.ServiceProvider.GetService<PartsUnlimitedContext>();
 
-
-                bool dbNewlyCreated = await db.Database.EnsureCreatedAsync();
-
                 //Seeding a database using migrations is not yet supported. (https://github.com/aspnet/EntityFramework/issues/629)
                 //Add seed data, only if the tables are empty.
                 bool tablesEmpty = !db.Products.Any() && !db.Orders.Any() && !db.Categories.Any() && !db.Stores.Any();
 
-                if (dbNewlyCreated || tablesEmpty)
+                if (tablesEmpty)
                 {
                     await InsertTestData(serviceProvider);
-                    await CreateAdminUser(serviceProvider);
+                    //await CreateAdminUser(serviceProvider);
                 }
             }
-        }
+        } 
 
         public static async Task InsertTestData(IServiceProvider serviceProvider)
         {
@@ -212,7 +209,8 @@ namespace PartsUnlimited.Models
                         {
                             var product = products.Single(x => x.RecommendationId == id);
                             var orderDetail = GetOrderDetail(product, order);
-                            db.OrderDetails.Add(orderDetail);
+                            // ENHANCEMENT: Add Order Details data.
+                            // db.OrderDetails.Add(orderDetail);
                             total += orderDetail.UnitPrice;
                         }
 
