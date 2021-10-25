@@ -18,12 +18,11 @@ param (
     $DeploymentID,
 
 
-     [string]
-$AzureSubscriptionID,
+    [string]
+    $AzureSubscriptionID,
 
-  [string]
-  $AzureTenantID
-    [Parameter(Mandatory=$False)] [string] $SqlPass = ""
+    [string]
+    $AzureTenantID
 )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
