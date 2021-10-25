@@ -26,6 +26,7 @@ param (
 )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
+
 #$vmAdminUsername="demouser"
 #$trainerUserName="trainer"
 #$trainerUserPassword="Password.!!1"
