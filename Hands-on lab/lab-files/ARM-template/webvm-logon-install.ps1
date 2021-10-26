@@ -1,8 +1,5 @@
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension1.txt -Append
 
-$commonscriptpath = "replacepath\cloudlabs-common\cloudlabs-windows-functions.ps1"
-. $commonscriptpath
-
 function Wait-Install {
     $msiRunning = 1
     $msiMessage = ""
@@ -25,7 +22,6 @@ function Wait-Install {
     }
 }
 $branchName = "prod-1"
-
 # Install App Service Migration Assistant
 Wait-Install
 Write-Host "Installing App Service Migration Assistant..."
