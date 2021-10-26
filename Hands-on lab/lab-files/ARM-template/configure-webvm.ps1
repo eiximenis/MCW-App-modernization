@@ -99,37 +99,6 @@ Write-Host "Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$Sq
 ((Get-Content -path "$item\Hands-on lab\lab-files\src\src\PartsUnlimitedWebsite\config.release.json" -Raw) -replace 'SETCONNECTIONSTRING',"Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$SqlPass;") | Set-Content -Path "$item\Hands-on lab\lab-files\src\src\PartsUnlimitedWebsite\config.json"
 
 
-#Import Common Functions
-$path = pwd
-$path=$path.Path
-$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
-. $commonscriptpath
-
-# Run Imported functions from cloudlabs-windows-functions.ps1
-
-#CloudLabsManualAgent
-
-#CloudLabsManualAgent Install
-
-[Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
-[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
-
-Disable-InternetExplorerESC
-Enable-IEFileDownload
-Enable-CopyPageContent-In-InternetExplorer
-DisableServerMgrNetworkPopup
-CreateLabFilesDirectory
-DisableWindowsFirewall
-InstallEdgeChromium
-
-InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
-InstallAzPowerShellModule
-CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
-
-# Enable Embedded shadow
-#Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
-
-
 # Downloading Deferred Installs
 # Download App Service Migration Assistant 
 (New-Object System.Net.WebClient).DownloadFile('https://appmigration.microsoft.com/api/download/windows/AppServiceMigrationAssistant.msi', 'C:\AppServiceMigrationAssistant.msi')
@@ -170,6 +139,35 @@ Wait-Install
 (New-Object System.Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?LinkID=623230', 'C:\vscode.exe')
 Start-Process -file 'C:\vscode.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:\vscode_install.txt" /NORESTART /FORCECLOSEAPPLICATIONS /mergetasks="!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"' -passthru | wait-process
 
+#Import Common Functions
+$path = pwd
+$path=$path.Path
+$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
+# Run Imported functions from cloudlabs-windows-functions.ps1
+
+#CloudLabsManualAgent
+
+#CloudLabsManualAgent Install
+
+[Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
+
+Disable-InternetExplorerESC
+Enable-IEFileDownload
+Enable-CopyPageContent-In-InternetExplorer
+DisableServerMgrNetworkPopup
+CreateLabFilesDirectory
+DisableWindowsFirewall
+InstallEdgeChromium
+
+InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
+InstallAzPowerShellModule
+CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+
+# Enable Embedded shadow
+#Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
 
 #Autologin
 $Username = "demouser"
