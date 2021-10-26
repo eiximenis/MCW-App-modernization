@@ -109,9 +109,19 @@ $commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1
 
 #CloudLabsManualAgent
 
-CloudLabsManualAgent Install
+#CloudLabsManualAgent Install
 
-WindowsServerCommon
+[Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
+
+Disable-InternetExplorerESC
+Enable-IEFileDownload
+Enable-CopyPageContent-In-InternetExplorer
+DisableServerMgrNetworkPopup
+CreateLabFilesDirectory
+DisableWindowsFirewall
+InstallEdgeChromium
+
 InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 InstallAzPowerShellModule
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
@@ -169,11 +179,11 @@ Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String
 Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
 Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
 
-$Validstatus="Pending"  ##Failed or Successful at the last step
-$Validmessage="Post Deployment is Pending"
+#$Validstatus="Pending"  ##Failed or Successful at the last step
+#$Validmessage="Post Deployment is Pending"
 
 #Set the final deployment status
-CloudlabsManualAgent setStatus
+#CloudlabsManualAgent setStatus
 
 Stop-Transcript  
 
