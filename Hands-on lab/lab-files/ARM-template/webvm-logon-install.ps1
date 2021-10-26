@@ -53,4 +53,6 @@ Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
 Write-Host "Restarting IIS"
 iisreset.exe /restart
 
+iisreset /noforce 
+
 Stop-Transcript
