@@ -1,5 +1,3 @@
-Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension1.txt -Append
-
 function Wait-Install {
     $msiRunning = 1
     $msiMessage = ""
@@ -52,7 +50,3 @@ Unregister-ScheduledTask -TaskName "Install Lab Requirements" -Confirm:$false
 # Restart the app for the startup to pick up the database connection string.
 Write-Host "Restarting IIS"
 iisreset.exe /restart
-
-iisreset /noforce 
-
-Stop-Transcript
