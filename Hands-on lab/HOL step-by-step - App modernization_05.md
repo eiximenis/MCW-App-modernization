@@ -18,9 +18,9 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
     ![Select your resource group.](media/resource-group-1.png "Resource Group")
 
-1. Select **Create** and then **Marketplace** inside the resource group to add a new resource.
+1. Select **Create** inside the resource group to add a new resource.
 
-    ![Lab resource group is open. Resource Add button is highlighted.](media/portal-add-resource.png "Lab Resource Group")
+    ![Lab resource group is open. Resource Add button is highlighted.](media/portal-add-resource-1.png "Lab Resource Group")
 
 1. Type **Azure Migrate** into the search box and select **Azure Migrate** from the dropdown.
 
@@ -46,7 +46,7 @@ Azure Migrate provides a centralized hub to assess and migrate on-premises serve
 
     ![Azure Migrate Web App assessment and migration tools are presented.](media/azure-migrate-web-app-3.png "Azure Migrate Web Apps Capabilities")
 
-1. Another aspect of our migration project will be the database for Parts Unlimited's web site. We will have to assess the database's compatibility and migrate to Azure SQL Database. Let's switch to the **SQL Server(only) (1)** section in Azure Migrate. Select **Click here (2)** hyperlink for Assessment tools.
+1. Another aspect of our migration project will be the database for Parts Unlimited's web site. We will have to assess the database's compatibility and migrate to Azure SQL Database. Let's switch to the **Databases (only) (1)** section in Azure Migrate. Select **Click here (2)** hyperlink for Assessment tools.
 
     ![Azure Migrate is open. Databases section is selected. Click here link for assessment tools is highlighted.](media/azure-migrate-web-app-4.png "Azure Migrate Databases")
 
