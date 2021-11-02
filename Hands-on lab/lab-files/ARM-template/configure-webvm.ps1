@@ -1,7 +1,31 @@
 param (
     [Parameter(Mandatory=$False)] [string] $SqlIP = "",
-    [Parameter(Mandatory=$False)] [string] $SqlPass = ""
+    [Parameter(Mandatory=$False)] [string] $SqlPass = "",
+    [Parameter(Mandatory = $true)]
+    [string]
+    $AzureUserName,
+
+    [string]
+    $AzurePassword,
+
+    [string]
+    $ODLID,
+
+    [string]
+    $InstallCloudLabsShadow,
+
+    [string]
+    $DeploymentID,
+    
+     [string]
+  $AzureTenantID,
+  
+  [string]
+  $AzureSubscriptionID
 )
+
+Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
+
 function Disable-InternetExplorerESC {
     $AdminKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}"
     $UserKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}"
@@ -73,6 +97,31 @@ Write-Host "Server=$SqlIP;Database=PartsUnlimited;User Id=PUWebSite;Password=$Sq
 # Download 3.1.4 SDK
 (New-Object System.Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/70062b11-491c-403c-91db-9d84462ee292/5db435e39128cbb608e76bf5111ab3dc/dotnet-sdk-3.1.413-win-x64.exe', 'C:\dotnet-sdk-3.1.413-win-x64.exe')
 
+#Import Common Functions
+$path = pwd
+$path=$path.Path
+$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
+
+CloudLabsManualAgent Install
+
+#WindowsServerCommon
+
+[Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
+Disable-InternetExplorerESC
+Enable-IEFileDownload
+Enable-CopyPageContent-In-InternetExplorer
+DisableServerMgrNetworkPopup
+CreateLabFilesDirectory
+DisableWindowsFirewall
+InstallEdgeChromium
+
+InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
+InstallAzPowerShellModule
+CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+
 # Schedule Installs for first Logon
 $argument = "-File `"C:\MCW\MCW-App-modernization-$branchName\Hands-on lab\lab-files\ARM-template\webvm-logon-install.ps1`""
 $triggerAt = New-ScheduledTaskTrigger -AtLogOn -User demouser
@@ -101,3 +150,25 @@ Wait-Install
 (New-Object System.Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?LinkID=623230', 'C:\vscode.exe')
 Start-Process -file 'C:\vscode.exe' -arg '/VERYSILENT /SUPPRESSMSGBOXES /LOG="C:\vscode_install.txt" /NORESTART /FORCECLOSEAPPLICATIONS /mergetasks="!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"' -passthru | wait-process
 
+#Replace Path
+
+(Get-Content C:\MCW\MCW-App-modernization-stage-1\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1) -replace "replacepath","$Path" | Set-Content C:\MCW\MCW-App-modernization-stage-1\'Hands-on lab'\lab-files\ARM-template\webvm-logon-install.ps1 -Verbos
+
+
+#Autologin
+$Username = "demouser"
+$Pass = "Password.1!!"
+$RegistryPath = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String 
+Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
+Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
+
+$Validstatus="Pending"  ##Failed or Successful at the last step
+$Validmessage="Post Deployment is Pending"
+
+#Set the final deployment status
+CloudlabsManualAgent setStatus
+
+Stop-Transcript  
+
+Restart-Computer
