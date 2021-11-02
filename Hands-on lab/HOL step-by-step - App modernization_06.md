@@ -68,7 +68,7 @@ After reviewing the assessment results, you have ensured the web application is 
 
 1. Switch to the **Web Apps (1)** section. See the number of discovered web servers, assessed websites **(2)** and migrated websites change **(3)**. Keep in mind that you might need to wait for 5 to 10 minutes for results to show up. You can use the **Refresh** button on the page to see the latest status.
 
-    ![Azure Migrate shows web app assessment and migration reports.](media/azure-migrate-web-app-migration-done-2.png "Azure Migrate Web Apps Tools")
+    ![Azure Migrate shows web app assessment and migration reports.](media/azure-migrate-web-app-migration-done-2.1.png "Azure Migrate Web Apps Tools")
     
     
     
