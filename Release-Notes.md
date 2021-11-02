@@ -1,5 +1,12 @@
 # Release Notes
 
+### 2 November 2021
+
+  - Minor updates in the Lab Guide.
+  - Updated the instructions and screenshots in all the exercises as the UI for **Azure Migrate** has been updated from Azure end. Also, modified few instructions for better user experience.
+-----------------
+
+
 ### 12 October 2021
   - Minor updates in the Lab Guide.
   - Updated the screenshot in Exercise 2 to launch the SQL Server Management Studio from SQL VM for better user experience.
