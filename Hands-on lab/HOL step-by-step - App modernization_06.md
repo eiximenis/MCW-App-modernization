@@ -46,7 +46,10 @@ After reviewing the assessment results, you have ensured the web application is 
 
     ![Azure Code Login web site is open. Context menu for the code textbox is shown. Paste command from the context menu is highlighted. The next button is highlighted as a second step. ](media/appservicemigration-azure-login-code.png "Enter Authentication Code")
 
-1. Continue the login process with your Azure Subscription credentials. When you see the message that says **You have signed in to the Azure App Service Migration Assistant application on your device** close the browser tab and minimize the edge browser window to return to the App Service Migration Assistant Window.
+1. Complete the login process using the below credentials. When you see the message that says **You have signed in to the Azure App Service Migration Assistant application on your device** close the browser tab and minimize the edge browser window to return to the App Service Migration Assistant Window.
+
+   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+   * Password: <inject key="AzureAdUserPassword"></inject>
 
     ![Azure Login process is complete. A message dialog is shown that indicates the login process is a success.](media/appservicemigration-azure-login-complete.png "App Service Migration Assistant authentication approval")
 
