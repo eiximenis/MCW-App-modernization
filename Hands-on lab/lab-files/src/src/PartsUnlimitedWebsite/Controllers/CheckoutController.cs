@@ -19,11 +19,11 @@ namespace PartsUnlimited.Controllers
     [Authorize]
     public class CheckoutController : Controller
     {
-        private readonly IPartsUnlimitedContext _db;
+        private readonly PartsUnlimitedContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         public IConfiguration Configuration { get; }
 
-        public CheckoutController(IPartsUnlimitedContext context, UserManager<ApplicationUser> userManager, IConfiguration configuration)
+        public CheckoutController(PartsUnlimitedContext context, UserManager<ApplicationUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _db = context;
@@ -73,6 +73,7 @@ namespace PartsUnlimited.Controllers
 
                     //Add the Order
                     _db.Orders.Add(order);
+                    await _db.SaveChangesAsync(HttpContext.RequestAborted);
 
                     //Process the order
                     var cart = ShoppingCart.GetCart(_db, HttpContext);
@@ -92,19 +93,18 @@ namespace PartsUnlimited.Controllers
                             queueClient.SendMessage(System.Convert.ToBase64String(plainTextBytes));
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        //return View("Error");
+                        return View("Error");
                     }
 
                     return RedirectToAction("Complete",
                         new { id = order.OrderId });
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                //Invalid - redisplay with errors
-                return View(order);
+                return View("Error");
             }
         }
 
@@ -129,3 +129,4 @@ namespace PartsUnlimited.Controllers
         }
     }
 }
+
