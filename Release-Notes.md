@@ -1,5 +1,11 @@
 # Release Notes
 
+### 2 December 2021
+
+  - Major updates in the Lab.
+  - Created new branch Stage-2 and pushed all the recent web-deploy-files.zip and src files, updated the lab guide in Exercise 4, task 3 as there are new updates from microsoft repo.  
+-----------------
+
 ### 2 November 2021
 
   - Minor updates in the Lab Guide.
