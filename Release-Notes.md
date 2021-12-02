@@ -1,5 +1,12 @@
 # Release Notes
 
+### 2 December 2021
+
+  - Major updates in the Lab Guide.
+  - The application source code has been changed from .NET Core 2.2 to 3.1 so that there will be no need to manually change the .Net core version while while setting up a CI/CD pipeline with GitHub Actions in Exercise 4 Task 3. The instructions and screenshots have been updated in the lab guide as per the new update.
+ 
+-----------------
+
 ### 2 November 2021
 
   - Minor updates in the Lab Guide.
