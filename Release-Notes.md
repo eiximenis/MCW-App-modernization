@@ -1,9 +1,18 @@
 # Release Notes
 
+### 1 February 2022
+
+  - Minor updates in the Lab Guide.
+  - Updated the instructions and screenshots in the lab guide as per the new UI in Azure and GitHub.
+
+--------------------
+
 ### 13 December 2021
 
   - Minor updates in the Lab Guide.
   - Issue while setting up CI/CD with GitHub actions in Exercise 4 Task 3 Step 14 is fixed, the issue is due to recent changes in GitHub and NPM version. The workflow file has been updated with workaround as suggested by MS team.
+
+-----------------
 
 ### 2 December 2021
 
